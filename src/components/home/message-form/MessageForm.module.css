@@ -1,0 +1,104 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  gap: 24px;
+}
+
+.label {
+  font-family: 'InterBold';
+  font-size: 40px;
+  margin: 0;
+}
+
+.question{
+  color: #6b6b6b;
+  font-family: 'InterLight';
+  font-style: italic;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.question:hover{
+  cursor: pointer;
+}
+
+.answer{
+  color: #6b6b6b;
+  font-family: 'InterLight';
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputLabel {
+  margin: 0;
+}
+
+.nameInput {
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: 'InterLight';
+  border: 0.5px solid;
+  height: 24px;
+}
+
+.messageInput {
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: 'InterLight';
+  border: 0.5px solid;
+  height: 100px;
+}
+
+.basic {
+  margin: 0;
+  font-family: 'InterLight';
+  font-size: 14px;
+  color: #6b6b6b;
+}
+
+.error {
+  margin: 0;
+  font-family: 'InterLight';
+  font-size: 14px;
+  color: red;
+}
+
+.submitButton {
+  font-family: 'InterRegular';
+  font-size: 16px;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+.submitText {
+  margin: 0;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    width: auto;
+  }
+}
+
+@media (max-width: 670px) {
+  .label {
+    font-size: 30px;
+  }
+}

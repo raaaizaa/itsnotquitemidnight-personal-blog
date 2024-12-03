@@ -1,0 +1,84 @@
+.spotifyCardContainer {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  font-weight: 600;
+  margin: 0;
+  gap: 24px;
+}
+
+.albumAnchor {
+  width: fit-content;
+  height: fit-content;
+}
+
+.spotifyImage {
+  width: 300px;
+  height: 300px;
+}
+
+.spotifyTextContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.spotifyTitle {
+  font-family: 'InterBold';
+  text-decoration: none;
+  color: black;
+  font-size: 28px;
+  margin: 0;
+}
+
+.spotifyTitle:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 2px;
+}
+
+.spotifyArtist {
+  font-family: 'InterLight';
+  color: #6b6b6b;
+  font-size: 20px;
+  margin: 0;
+}
+
+@media (max-width: 1200px) {
+  .spotifyImage {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .spotifyCardContainer {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+@media (max-width: 670px) {
+  .spotifyCardContainer {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .spotifyTextContainer {
+    gap: 0px;
+  }
+
+  .spotifyImage {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  .spotifyTitle {
+    font-size: 24px;
+  }
+
+  .spotifyArtist {
+    font-size: 16px;
+  }
+}

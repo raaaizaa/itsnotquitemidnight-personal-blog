@@ -1,0 +1,111 @@
+.wrapper {
+  display: flex;
+  text-decoration: none;
+  flex-direction: column;
+}
+
+.wrapper:hover {
+  background-color: rgb(250, 250, 250);
+  transition: background-color 0.1s ease-in-out;
+  cursor: pointer;
+}
+
+.divider {
+  border-top: 0.5px solid rgb(242, 242, 242);
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 0px 28px 0px;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  color: black;
+  gap: 12px;
+  width: 580px;
+}
+
+.label,
+.label > h1 {
+  font-family: 'InterBold';
+  color: black;
+  margin: 0;
+  font-size: 22px;
+}
+
+.textInfoContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.description > p {
+  font-family: 'InterLight';
+  font-size: 16px;
+  color: #6b6b6b;
+  margin: 0;
+}
+
+.date {
+  margin: 0;
+  font-size: 14px;
+}
+
+.imageContainer {
+  width: 160px;
+  height: 107px;
+}
+
+.image {
+  width: 160px;
+  height: 107px;
+  object-fit: cover;
+}
+
+@media (max-width: 800px) {
+  .textContainer {
+    width: 100%;
+  }
+
+  .label,
+  .label > h1 {
+    font-size: 20px;
+  }
+
+  .description > p {
+    font-size: 14px;
+  }
+
+  .date {
+    font-size: 12px;
+  }
+
+  .image,
+  .imageContainer {
+    width: 120px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .date {
+    font-size: 10px;
+  }
+
+  .image,
+  .imageContainer {
+    width: 96px;
+    height: 64px;
+  }
+}

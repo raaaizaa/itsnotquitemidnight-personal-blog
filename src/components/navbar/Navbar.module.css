@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  padding: 8px 72px 8px 72px;
+  height: 50px;
+  align-items: center;
+  background-color: white;
+  border-bottom: 0.5px solid rgb(242, 242, 242);
+  position: sticky;
+  left: 0;
+  top: 0;
+  right: 0;
+}
+
+.title {
+  font-family: 'HitMePunk';
+  font-size: 40px;
+  margin: 0;
+  text-decoration: none;
+  color: black;
+  font-smooth: always;
+}
+
+@media (max-width: 800px) {
+  .container {
+    padding: 6px 28px 6px 28px;
+  }
+  .title {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 600px){
+  .container {
+    padding: 4px 24px 4px 24px;
+  }
+  .title {
+    font-size: 30px;
+  }
+}
