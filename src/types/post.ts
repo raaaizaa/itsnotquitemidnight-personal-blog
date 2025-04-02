@@ -9,9 +9,9 @@ export interface PostProps {
 }
 
 export interface PostDetailProps {
-  content: string;
-  description: string;
-  created_at: string;
+  content?: string;
+  description?: string;
+  created_at?: string;
 }
 
 export interface PostSEOProps{

@@ -1,7 +1,6 @@
 import MarkdownIt from 'markdown-it';
 
 const TOKEN = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
-console.log('token here: ', TOKEN);
 
 const md = new MarkdownIt({
   html: true,
@@ -21,9 +20,6 @@ export async function getPost() {
       }
     );
 
-    console.log('response here: ', response);
-    console.log('token setelah response: ', TOKEN);
-
     if (!response.ok) {
       throw new Error('Failed to fetch the posts!');
     }
@@ -32,7 +28,7 @@ export async function getPost() {
 
     return data;
   } catch (error) {
-    console.error();
+    console.error(error);
   }
 }
 
@@ -40,7 +36,7 @@ export async function getHeadline() {
   try {
     const post = await getPost();
     const headlines = await Promise.all(
-      post.map(async (item: any) => {
+      post.map(async (item) => {
         const indexMd = item.files['index.md'];
         if (!indexMd) {
           console.warn(`Gist ${item.id} does not contain an index.md file.`);
@@ -96,7 +92,7 @@ export async function getHeadline() {
   }
 }
 
-export async function getPostDetail(id: string) {
+export async function getPostDetail(id) {
   try {
     const response = await fetch(`https://api.github.com/gists/${id}`, {
       headers: {
@@ -141,7 +137,7 @@ export async function getPostDetail(id: string) {
 
     return { postDetails, postSEO };
   } catch (error) {
-    console.error();
+    console.error(error);
     return {
       postDetails: null,
       postSEO: null,

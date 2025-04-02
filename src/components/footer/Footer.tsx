@@ -1,4 +1,4 @@
-import React from 'react';
+import Image from 'next/image';
 
 import styles from './Footer.module.css';
 
@@ -13,11 +13,12 @@ export default function Footer() {
         <a
           href="https://github.com/raaaizaa/raizatriestocode-2025"
           target="_blank">
-          <img
+          <Image
             className={styles.githubIcon}
             src="../github-mark-white.svg"
             width={24}
             height={24}
+            alt="github"
           />
         </a>
       </div>

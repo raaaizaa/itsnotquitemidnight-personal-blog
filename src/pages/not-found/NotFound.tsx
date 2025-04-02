@@ -1,19 +1,15 @@
-import React from 'react';
+import Link from 'next/link';
 
 import styles from './NotFound.module.css';
 
-export default function NotFound() {
+export default function NotFoundPage() {
   return (
     <div className={styles.container}>
       <p className={styles.title}>Error 404: Page Not Found</p>
       <div className={styles.buttonContainer}>
-        <button
-          className={styles.button}
-          onClick={() => {
-            window.location.href = '/';
-          }}>
-          Take me back to home
-        </button>
+        <Link href="/">
+          <div className={styles.button}>Take me back to home</div>
+        </Link>
       </div>
     </div>
   );

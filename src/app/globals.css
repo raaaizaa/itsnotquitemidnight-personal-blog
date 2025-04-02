@@ -1,12 +1,5 @@
 @import 'tailwindcss';
 
-body {
-  font-family: 'InterRegular';
-  margin: auto;
-  user-select: none;
-  line-height: normal;
-}
-
 @font-face {
   font-family: 'InterRegular';
   src: url('../../public//fonts/Inter_24pt-Regular.ttf') format('opentype');
@@ -25,4 +18,11 @@ body {
 @font-face {
   font-family: 'HitMePunk';
   src: url('../../public/fonts/hit-me-punk.ttf') format('opentype');
+}
+
+body {
+  font-family: 'InterRegular';
+  margin: auto;
+  user-select: none;
+  line-height: normal;
 }

@@ -1,30 +1,30 @@
-import React from 'react';
-import { PostProps } from '../../../types/post';
+'use client';
+
+import { useEffect, useState } from 'react';
+import { PostProps } from '@/types/post';
+import { formatDate } from '@/utils/date-utils';
+import Link from 'next/link';
 import Image from 'next/image';
 
 import styles from './PostCard.module.css';
 
-interface Props {
-  post: PostProps;
-}
-
-export default function PostCard({ post }: Props) {
+export default function PostCard({ post }: { post: PostProps }) {
+  const [isClient, setIsClient] = useState(false);
   const { headline, first_image, created_at, id, cutted_description } = post;
-  const formatted_created_at = new Date(created_at).toLocaleDateString(
-    'en-US',
-    {
-      day: '2-digit',
-      month: 'short',
-      year: 'numeric',
-    }
-  );
+  const formatted_created_at = formatDate(created_at);
 
-  const handleClick = () => {
-    window.location.href = `/post/${id}`;
-  };
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const formatted_headline = isClient
+    ? headline.length > 150
+      ? `${headline.substring(0, 150)}...`
+      : headline
+    : '';
 
   return (
-    <div onClick={handleClick} className={styles.wrapper}>
+    <Link href={`/post/${id}`} className={styles.wrapper}>
       <div className={styles.divider} />
       <div className={styles.contentContainer}>
         <div className={styles.container}>
@@ -32,10 +32,7 @@ export default function PostCard({ post }: Props) {
             <p
               className={styles.label}
               dangerouslySetInnerHTML={{
-                __html:
-                  headline.length > 150
-                    ? `${headline.substring(0, 150)}...`
-                    : headline,
+                __html: formatted_headline,
               }}
             />
             <div className={styles.textInfoContainer}>
@@ -60,6 +57,6 @@ export default function PostCard({ post }: Props) {
           ) : null}
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

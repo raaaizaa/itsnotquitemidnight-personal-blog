@@ -1,13 +1,13 @@
-import React from 'react';
+import Link from 'next/link';
 
 import styles from './Navbar.module.css';
 
 export default function Navbar() {
   return (
     <div className={styles.container}>
-      <a href="/" className={styles.title}>
+      <Link href="/" className={styles.title}>
         itsnotquitemidnight
-      </a>
+      </Link>
     </div>
   );
 }

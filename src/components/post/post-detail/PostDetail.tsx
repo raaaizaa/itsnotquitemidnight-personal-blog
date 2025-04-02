@@ -1,33 +1,12 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import {usePathname} from 'next/navigation'
-import { getPostDetail } from '../../../services/getPost';
-import { PostDetailProps } from '../../../types/post';
-import PacmanLoading from '../../shared/loading/PacmanLoading';
+
+import { PostDetailProps } from '@/types/post';
+import PacmanLoading from '@/components/shared/loading/PacmanLoading';
 
 import styles from './PostDetail.module.css';
 
-export default function PostDetail() {
-  const pathname = usePathname()
-  const [postDetails, setPostDetails] = useState<PostDetailProps | null>(null);
-  const id = pathname?.split('/')[2]
-
-  useEffect(() => {
-    const fetchPostDetail = async () => {
-      if (!id) return;
-
-      try {
-        const { postDetails } = await getPostDetail(id);
-        setPostDetails(postDetails);
-      } catch (error) {
-        console.error('Error fetching post details:', error);
-      }
-    };
-
-    fetchPostDetail();
-  }, [id]);
-
-  if (!postDetails) {
+export default function PostDetail({ post }: { post: PostDetailProps | null }) {
+  if (!post) {
     return (
       <div className={styles.fallbackContainer}>
         <PacmanLoading />
@@ -39,14 +18,16 @@ export default function PostDetail() {
     <>
       <div className={styles.container}>
         <div
-          dangerouslySetInnerHTML={{ __html: postDetails.content }}
+          // @ts-expect-error ignore the html issue
+          dangerouslySetInnerHTML={{ __html: post?.content }}
           className={styles.content}
         />
         <div className={styles.divider} />
         <div className={styles.infoContainer}>
           <p className={styles.date}>
             {`Posted on `}
-            {new Date(postDetails.created_at).toLocaleDateString('en-US', {
+            {/* @ts-expect-error ignore this i forgot why i use this but yeah it prevents the error */}
+            {new Date(post?.created_at).toLocaleDateString('en-US', {
               day: '2-digit',
               month: 'short',
               year: 'numeric',

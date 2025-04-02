@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { TrackProps } from '@/types/track';
+import getNowPlaying from '@/services/getNowPlaying';
 import LoadingSpotifyCard from './LoadingSpotifyCard';
 import SpotifyCard from './SpotifyCard';
-import getNowPlaying from '../../../services/getNowPlaying';
-import { TrackProps } from '../../../types/track';
 
 import styles from './NowPlaying.module.css';
 
@@ -18,7 +18,7 @@ export default function NowPlaying() {
         setData(data);
       } catch (error) {
         console.error('Error fetching now playing data:', error);
-      } 
+      }
     };
     fetchNowPlaying();
     const interval = setInterval(fetchNowPlaying, 10000);

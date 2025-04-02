@@ -1,10 +1,10 @@
-'use client'
+'use client';
 
-import React, { useState } from 'react';
-import postMessage from '../../../services/postMessage';
-import { FormDataProps } from '../../../types/formData';
-import { currentDate } from '../../../utils/currentDate';
-import PacmanLoading from '../../shared/loading/PacmanLoading';
+import { useState } from 'react';
+import { FormDataProps } from '@/types/formData';
+import postMessage from '@/services/postMessage';
+import { getCurrentDate } from '@/utils/date-utils';
+import PacmanLoading from '@/components/shared/loading/PacmanLoading';
 
 import styles from './MessageForm.module.css';
 
@@ -26,15 +26,15 @@ export default function MessageForm() {
     setReveal(!reveal);
   };
 
-  const handleChange = (e: any) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const updatedFormData = { ...formData, date: currentDate() };
+    const updatedFormData = { ...formData, date: getCurrentDate() };
 
     try {
       setLoading(true);
