@@ -1,6 +1,6 @@
 import { FormDataProps } from '../types/formData';
 
-const SHEETS_ID = process.env.REACT_APP_SHEETS_ID;
+const SHEETS_ID = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_ID;
 
 export default async function postMessage(formData: FormDataProps) {
   try {

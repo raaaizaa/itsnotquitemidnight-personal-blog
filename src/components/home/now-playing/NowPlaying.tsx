@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect, useState } from 'react';
 import LoadingSpotifyCard from './LoadingSpotifyCard';
 import SpotifyCard from './SpotifyCard';

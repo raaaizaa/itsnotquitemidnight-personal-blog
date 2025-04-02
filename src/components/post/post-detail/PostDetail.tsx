@@ -1,25 +1,24 @@
+'use client';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import {usePathname} from 'next/navigation'
 import { getPostDetail } from '../../../services/getPost';
-import { PostDetailProps, PostSEOProps } from '../../../types/post';
+import { PostDetailProps } from '../../../types/post';
 import PacmanLoading from '../../shared/loading/PacmanLoading';
-import { Helmet } from 'react-helmet';
 
 import styles from './PostDetail.module.css';
 
 export default function PostDetail() {
+  const pathname = usePathname()
   const [postDetails, setPostDetails] = useState<PostDetailProps | null>(null);
-  const [postSEO, setPostSEO] = useState<PostSEOProps | null>(null);
-  const { id } = useParams<{ id: string }>();
+  const id = pathname?.split('/')[2]
 
   useEffect(() => {
     const fetchPostDetail = async () => {
       if (!id) return;
 
       try {
-        const { postDetails, postSEO } = await getPostDetail(id);
+        const { postDetails } = await getPostDetail(id);
         setPostDetails(postDetails);
-        setPostSEO(postSEO);
       } catch (error) {
         console.error('Error fetching post details:', error);
       }
@@ -28,7 +27,7 @@ export default function PostDetail() {
     fetchPostDetail();
   }, [id]);
 
-  if (!postDetails || !postSEO) {
+  if (!postDetails) {
     return (
       <div className={styles.fallbackContainer}>
         <PacmanLoading />
@@ -38,11 +37,6 @@ export default function PostDetail() {
 
   return (
     <>
-      {/* TODO: this shit need a backend service to get right metadata for social media sharing. i will work on it, later. */}
-      <Helmet>
-        <title>{`${postSEO?.headline} | It's Not Quite Midnight`}</title>
-      </Helmet>
-
       <div className={styles.container}>
         <div
           dangerouslySetInnerHTML={{ __html: postDetails.content }}

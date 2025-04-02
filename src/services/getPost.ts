@@ -1,6 +1,7 @@
 import MarkdownIt from 'markdown-it';
 
-const TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
+const TOKEN = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
+console.log('token here: ', TOKEN);
 
 const md = new MarkdownIt({
   html: true,
@@ -19,6 +20,9 @@ export async function getPost() {
         },
       }
     );
+
+    console.log('response here: ', response);
+    console.log('token setelah response: ', TOKEN);
 
     if (!response.ok) {
       throw new Error('Failed to fetch the posts!');

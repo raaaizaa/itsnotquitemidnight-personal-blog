@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react';
 import postMessage from '../../../services/postMessage';
 import { FormDataProps } from '../../../types/formData';
