@@ -1,5 +1,6 @@
 import React from 'react';
 import { PostProps } from '../../../types/post';
+import Image from 'next/image';
 
 import styles from './PostCard.module.css';
 
@@ -47,11 +48,13 @@ export default function PostCard({ post }: Props) {
           </div>
           {first_image ? (
             <div className={styles.imageContainer}>
-              <img
+              <Image
                 src={first_image}
-                alt="Post image"
+                alt="img"
                 className={styles.image}
-                loading="lazy"
+                quality={50}
+                width={500}
+                height={500}
               />
             </div>
           ) : null}

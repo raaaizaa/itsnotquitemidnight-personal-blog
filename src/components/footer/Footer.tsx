@@ -6,12 +6,10 @@ export default function Footer() {
   return (
     <div className={styles.container}>
       <div className={styles.textContainer}>
-        <div>
-          <p className={styles.text}>Created With 💖 by Raiza</p>
-          <p className={styles.text}>
-            ©itsnotquitemidnight {new Date().getFullYear()}
-          </p>
-        </div>
+        <p className={styles.text}>Created With 💖 by Raiza</p>
+        <p className={styles.text}>
+          ©itsnotquitemidnight {new Date().getFullYear()}
+        </p>
         <a
           href="https://github.com/raaaizaa/raizatriestocode-2025"
           target="_blank">

@@ -1,26 +1,28 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
+@import 'tailwindcss';
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'InterRegular';
+  margin: auto;
+  user-select: none;
+  line-height: normal;
+}
+
+@font-face {
+  font-family: 'InterRegular';
+  src: url('../../public//fonts/Inter_24pt-Regular.ttf') format('opentype');
+}
+
+@font-face {
+  font-family: 'InterBold';
+  src: url('../../public//fonts/Inter_24pt-Bold.ttf') format('opentype');
+}
+
+@font-face {
+  font-family: 'InterLight';
+  src: url('../../public//fonts/Inter_24pt-Light.ttf') format('opentype');
+}
+
+@font-face {
+  font-family: 'HitMePunk';
+  src: url('../../public/fonts/hit-me-punk.ttf') format('opentype');
 }

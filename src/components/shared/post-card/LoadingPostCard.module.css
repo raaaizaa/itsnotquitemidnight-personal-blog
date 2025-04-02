@@ -29,6 +29,10 @@
   border-top: 0.5px solid rgb(242, 242, 242);
 }
 
+.contentContainer {
+  padding: 28px 0px 28px 0px;
+}
+
 .container {
   display: flex;
   align-items: center;

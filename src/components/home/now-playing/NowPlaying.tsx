@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { useEffect, useState } from 'react';
 import LoadingSpotifyCard from './LoadingSpotifyCard';
@@ -28,7 +28,14 @@ export default function NowPlaying() {
   if (!data) {
     return (
       <div className={styles.container}>
-        <p className={styles.title}>Now playing</p>
+        <p className={styles.title}>
+          Now playing on{' '}
+          <a
+            className={styles.spotifyColor}
+            href="https://open.spotify.com/user/raaaizaa">
+            Spotify
+          </a>
+        </p>
         <LoadingSpotifyCard />
       </div>
     );
@@ -37,8 +44,14 @@ export default function NowPlaying() {
   return (
     <div className={styles.container}>
       <p className={styles.title}>
-        {data?.playedAt ? 'Last played on ' : 'Now playing on '}<a className={styles.spotifyColor} href='https://open.spotify.com/user/raaaizaa'>Spotify</a>
+        {data?.playedAt ? 'Last played on ' : 'Now playing on '}
+        <a
+          className={styles.spotifyColor}
+          href="https://open.spotify.com/user/raaaizaa">
+          Spotify
+        </a>
       </p>
+
       <SpotifyCard {...data} />
     </div>
   );
