@@ -10,7 +10,7 @@ import styles from './BlogPosts.module.css';
 
 const POSTS_PER_PAGE = 8;
 
-export default function BlogPosts({ data }: { data: PostProps[] }) {
+export default function BlogPosts({data}: {data: PostProps[] | undefined}) {
   const [currentPage, setCurrentPage] = useState(1);
 
   // Calculate the displayed posts for the current page

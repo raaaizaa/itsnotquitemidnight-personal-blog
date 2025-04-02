@@ -1,4 +1,4 @@
-import { FormDataProps } from '../types/formData';
+import { FormDataProps } from "@/types/formData";
 
 const SHEETS_ID = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_ID;
 

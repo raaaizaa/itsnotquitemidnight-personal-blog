@@ -5,7 +5,7 @@ import ImagePlaceholder from '../../../../public/meta-image-formatted.png';
 import PostDetailWrapper from '@/wrapper/PostDetailWrapper';
 import OtherPostsWrapper from '@/wrapper/OtherPostsWrapper';
 
-import styles from './Post.module.css';
+import styles from './page.module.css';
 
 export async function generateMetadata(): Promise<Metadata> {
   const id = await getPostId();

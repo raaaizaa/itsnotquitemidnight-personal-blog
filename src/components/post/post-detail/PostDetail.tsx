@@ -8,7 +8,7 @@ import portrait from '../../../../public/github-portrait.jpg';
 
 import styles from './PostDetail.module.css';
 
-export default function PostDetail({ post }: { post: PostDetailProps }) {
+export default function PostDetail({ post }: { post: PostDetailProps | null }) {
   if (!post) {
     return (
       <div className={styles.fallbackContainer}>
@@ -20,7 +20,7 @@ export default function PostDetail({ post }: { post: PostDetailProps }) {
   return (
     <>
       <div className={styles.container}>
-        <Link href="https://gist.github.com/raaaizaa" target='_blank'>
+        <Link href="https://gist.github.com/raaaizaa" target="_blank">
           <div className={styles.authorContainer}>
             <Image
               src={portrait}

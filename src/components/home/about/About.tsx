@@ -1,7 +1,7 @@
-import React from 'react';
 import Image from 'next/image';
-import styles from './About.module.css';
 import portrait from '../../../../public/portrait.jpg';
+
+import styles from './About.module.css';
 
 export default function About() {
   return (

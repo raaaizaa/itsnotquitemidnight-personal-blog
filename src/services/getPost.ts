@@ -1,5 +1,5 @@
-import { getPathname } from '@/utils/url-utils';
 import MarkdownIt from 'markdown-it';
+import { getPathname } from '@/utils/url-utils';
 
 const TOKEN = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
 
