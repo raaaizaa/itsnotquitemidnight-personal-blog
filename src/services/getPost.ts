@@ -1,3 +1,4 @@
+import { getPathname } from '@/utils/url-utils';
 import MarkdownIt from 'markdown-it';
 
 const TOKEN = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
@@ -132,7 +133,7 @@ export async function getPostDetail(id) {
       headline: headline,
       image: image,
       description: cuttedDescription,
-      url: `itsnotquitemidnight.vercel.app/post/${id}`,
+      url: await getPathname(),
     };
 
     return { postDetails, postSEO };

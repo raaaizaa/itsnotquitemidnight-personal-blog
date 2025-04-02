@@ -107,6 +107,11 @@
   gap: 12px;
 }
 
+.authorContainer:hover .author{
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .infoContainer{
   line-height: normal !important;
 }
