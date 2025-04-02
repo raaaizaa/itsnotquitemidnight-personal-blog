@@ -13,23 +13,20 @@ export async function generateMetadata(): Promise<Metadata> {
   const imageUrl = postSEO?.image || ImagePlaceholder.src;
 
   return {
-    title: postSEO?.headline || 'Default Title',
-    description: postSEO?.description || 'Default Description',
+    title: postSEO?.headline,
+    description: postSEO?.description,
     openGraph: {
       type: 'article',
-      title: postSEO?.headline || 'Default Title',
-      description: postSEO?.description || 'Default Description',
-      // @ts-expect-error seo thingy error
-      image: imageUrl,
+      title: postSEO?.headline,
+      description: postSEO?.description,
+      images: imageUrl,
       url: postSEO?.url || 'itsnotquitemidnight.xyz',
     },
     twitter: {
       card: 'summary_large_image',
-      title: postSEO?.headline || 'Default Title',
-      description: postSEO?.description || 'Default Description',
-      // @ts-expect-error seo thingy error
-      image: imageUrl,
-      url: postSEO?.url || 'itsnotquitemidnight.xyz',
+      title: postSEO?.headline,
+      description: postSEO?.description,
+      images: imageUrl,
     },
     other: {
       author: 'Raiza',
