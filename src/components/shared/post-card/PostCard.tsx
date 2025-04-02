@@ -1,29 +1,17 @@
-import React from 'react';
-import { PostProps } from '../../../types/post';
+import { PostProps } from '@/types/post';
+import { formatDate } from '@/utils/date-utils';
+import Link from 'next/link';
+import Image from 'next/image';
 
 import styles from './PostCard.module.css';
 
-interface Props {
-  post: PostProps;
-}
-
-export default function PostCard({ post }: Props) {
-  const { headline, first_image, created_at, id, cutted_description } = post;
-  const formatted_created_at = new Date(created_at).toLocaleDateString(
-    'en-US',
-    {
-      day: '2-digit',
-      month: 'short',
-      year: 'numeric',
-    }
-  );
-
-  const handleClick = () => {
-    window.location.href = `/post/${id}`;
-  };
+export default function PostCard({ post }: { post: PostProps }) {
+  const { headline, first_image, created_at, id, cutted_description, tag } =
+    post;
+  const formatted_created_at = formatDate(created_at);
 
   return (
-    <div onClick={handleClick} className={styles.wrapper}>
+    <Link href={`/post/${id}`} className={styles.wrapper}>
       <div className={styles.divider} />
       <div className={styles.contentContainer}>
         <div className={styles.container}>
@@ -42,21 +30,26 @@ export default function PostCard({ post }: Props) {
                 className={styles.description}
                 dangerouslySetInnerHTML={{ __html: cutted_description }}
               />
-              <p className={styles.date}>{formatted_created_at}</p>
+              <div className={styles.footer}>
+                {tag && <p className={styles.tag}>{tag}</p>}
+                <p className={styles.date}>{formatted_created_at}</p>
+              </div>
             </div>
           </div>
           {first_image ? (
             <div className={styles.imageContainer}>
-              <img
+              <Image
                 src={first_image}
-                alt="Post image"
+                alt="img"
                 className={styles.image}
-                loading="lazy"
+                quality={50}
+                width={500}
+                height={500}
               />
             </div>
           ) : null}
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

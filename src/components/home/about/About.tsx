@@ -1,4 +1,6 @@
-import React from 'react';
+import Image from 'next/image';
+import portrait from '../../../../public/portrait.jpg';
+
 import styles from './About.module.css';
 
 export default function About() {
@@ -6,10 +8,13 @@ export default function About() {
     <div className={styles.container}>
       <p className={styles.title}>About</p>
       <div className={styles.contentContainer}>
-        <img
-          src="portrait.jpg"
+        <Image
+          src={portrait}
           className={styles.image}
-          alt="raiza-tapi-bentuknya-gambar"
+          width={500}
+          height={500}
+          quality={50}
+          alt="portrait"
         />
         <p className={styles.subtitle}>
           Tempat seorang cowok kelahiran 2003 menuangkan pikirannya dalam bentuk

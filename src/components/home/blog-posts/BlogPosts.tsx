@@ -1,35 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { getHeadline } from '../../../services/getPost';
+'use client';
 
+import { useState } from 'react';
+import { PostProps } from '@/types/post';
 import Pagination from './Pagination';
-import { PostProps } from '../../../types/post';
+import PostCard from '@/components/shared/post-card/PostCard';
+import LoadingPostCard from '@/components/shared/post-card/LoadingPostCard';
 
 import styles from './BlogPosts.module.css';
-import PostCard from '../../shared/post-card/PostCard';
-import LoadingPostCard from '../../shared/post-card/LoadingPostCard';
 
 const POSTS_PER_PAGE = 8;
 
-export default function BlogPosts() {
-  const [data, setData] = useState<PostProps[]>();
+export default function BlogPosts({data}: {data: PostProps[] | undefined}) {
   const [currentPage, setCurrentPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchPost = async () => {
-      try {
-        setIsLoading(true);
-        const data = await getHeadline();
-        setData(data);
-      } catch (error) {
-        console.error('Error fetching posts or Markdown!', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchPost();
-  }, []);
 
   // Calculate the displayed posts for the current page
   const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
@@ -49,13 +31,9 @@ export default function BlogPosts() {
         <p className={styles.title}>
           A personal blog that consists of his thoughts over time 🕙
         </p>
-        <p className={styles.subtitle}>
-          Karena biasanya banyak hal yang dipikirin tapi nggak tau mau disimpen
-          dimana
-        </p>
       </div>
 
-      {isLoading ? (
+      {!data ? (
         <div className={styles.dataContainer}>
           {Array.from({ length: POSTS_PER_PAGE }).map((_, index) => (
             <LoadingPostCard key={index} />

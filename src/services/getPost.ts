@@ -1,6 +1,7 @@
 import MarkdownIt from 'markdown-it';
+import { getPathname } from '@/utils/url-utils';
 
-const TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
+const TOKEN = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
 
 const md = new MarkdownIt({
   html: true,
@@ -28,7 +29,7 @@ export async function getPost() {
 
     return data;
   } catch (error) {
-    console.error();
+    console.error(error);
   }
 }
 
@@ -36,7 +37,7 @@ export async function getHeadline() {
   try {
     const post = await getPost();
     const headlines = await Promise.all(
-      post.map(async (item: any) => {
+      post.map(async (item) => {
         const indexMd = item.files['index.md'];
         if (!indexMd) {
           console.warn(`Gist ${item.id} does not contain an index.md file.`);
@@ -78,7 +79,7 @@ export async function getHeadline() {
           id: item.id,
           url: indexMd.raw_url,
           headline: firstLine,
-          tag: item.description || 'No description provided',
+          tag: item.description,
           cutted_description: cuttedDescription,
           created_at: item.created_at,
           first_image: firstImage,
@@ -92,7 +93,7 @@ export async function getHeadline() {
   }
 }
 
-export async function getPostDetail(id: string) {
+export async function getPostDetail(id) {
   try {
     const response = await fetch(`https://api.github.com/gists/${id}`, {
       headers: {
@@ -124,7 +125,7 @@ export async function getPostDetail(id: string) {
 
     const postDetails = {
       content: formattedContent,
-      description: data.description,
+      tag: data.description,
       created_at: data.created_at,
     };
 
@@ -132,12 +133,12 @@ export async function getPostDetail(id: string) {
       headline: headline,
       image: image,
       description: cuttedDescription,
-      url: `itsnotquitemidnight.vercel.app/post/${id}`,
+      url: await getPathname(),
     };
 
     return { postDetails, postSEO };
   } catch (error) {
-    console.error();
+    console.error(error);
     return {
       postDetails: null,
       postSEO: null,

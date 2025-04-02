@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+'use client';
+
+import { useEffect, useState } from 'react';
+import { TrackProps } from '@/types/track';
+import getNowPlaying from '@/services/getNowPlaying';
 import LoadingSpotifyCard from './LoadingSpotifyCard';
 import SpotifyCard from './SpotifyCard';
-import getNowPlaying from '../../../services/getNowPlaying';
-import { TrackProps } from '../../../types/track';
 
 import styles from './NowPlaying.module.css';
 
@@ -16,7 +18,7 @@ export default function NowPlaying() {
         setData(data);
       } catch (error) {
         console.error('Error fetching now playing data:', error);
-      } 
+      }
     };
     fetchNowPlaying();
     const interval = setInterval(fetchNowPlaying, 10000);
@@ -26,7 +28,14 @@ export default function NowPlaying() {
   if (!data) {
     return (
       <div className={styles.container}>
-        <p className={styles.title}>Now playing</p>
+        <p className={styles.title}>
+          Now playing on{' '}
+          <a
+            className={styles.spotifyColor}
+            href="https://open.spotify.com/user/raaaizaa">
+            Spotify
+          </a>
+        </p>
         <LoadingSpotifyCard />
       </div>
     );
@@ -35,8 +44,14 @@ export default function NowPlaying() {
   return (
     <div className={styles.container}>
       <p className={styles.title}>
-        {data?.playedAt ? 'Last played on ' : 'Now playing on '}<a className={styles.spotifyColor} href='https://open.spotify.com/user/raaaizaa'>Spotify</a>
+        {data?.playedAt ? 'Last played on ' : 'Now playing on '}
+        <a
+          className={styles.spotifyColor}
+          href="https://open.spotify.com/user/raaaizaa">
+          Spotify
+        </a>
       </p>
+
       <SpotifyCard {...data} />
     </div>
   );

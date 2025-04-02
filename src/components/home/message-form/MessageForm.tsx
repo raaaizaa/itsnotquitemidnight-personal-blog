@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import postMessage from '../../../services/postMessage';
-import { FormDataProps } from '../../../types/formData';
-import { currentDate } from '../../../utils/currentDate';
-import PacmanLoading from '../../shared/loading/PacmanLoading';
+'use client';
+
+import { useState } from 'react';
+import { FormDataProps } from '@/types/formData';
+import postMessage from '@/services/postMessage';
+import { getCurrentDate } from '@/utils/date-utils';
+import PacmanLoading from '@/components/shared/loading/PacmanLoading';
 
 import styles from './MessageForm.module.css';
 
@@ -18,21 +20,16 @@ export default function MessageForm() {
     styles: 'basic',
   });
   const [isLoading, setLoading] = useState(false);
-  const [reveal, setReveal] = useState(false);
 
-  const handleReveal = () => {
-    setReveal(!reveal);
-  };
-
-  const handleChange = (e: any) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const updatedFormData = { ...formData, date: currentDate() };
+    const updatedFormData = { ...formData, date: getCurrentDate() };
 
     try {
       setLoading(true);
@@ -64,10 +61,6 @@ export default function MessageForm() {
     <div className={styles.container}>
       <div>
         <p className={styles.label}>Send me a message</p>
-        <p className={styles.question} onClick={handleReveal}>
-          Where will this message be sent?
-        </p>
-        {reveal && <p className={styles.answer}>Google Sheets.</p>}
       </div>
       <form onSubmit={handleSubmit} className={styles.formContainer}>
         <div className={styles.inputContainer}>

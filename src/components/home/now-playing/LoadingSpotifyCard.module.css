@@ -55,14 +55,12 @@
   margin: 0;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
   .artworkPlaceholder {
     width: 250px;
     height: 250px;
   }
-}
-
-@media (max-width: 1050px) {
+  
   .spotifyCardContainer {
     flex-direction: row;
     align-items: center;

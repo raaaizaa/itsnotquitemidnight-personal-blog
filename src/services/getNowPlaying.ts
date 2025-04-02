@@ -1,6 +1,6 @@
-const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
-const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
-const REFRESH_TOKEN = process.env.REACT_APP_REFRESH_TOKEN;
+const CLIENT_ID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
+const CLIENT_SECRET = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET;
+const REFRESH_TOKEN = process.env.NEXT_PUBLIC_SPOTIFY_REFRESH_TOKEN;
 const TOKEN = btoa(`${CLIENT_ID}:${CLIENT_SECRET}`);
 
 async function getAccessToken(): Promise<string> {

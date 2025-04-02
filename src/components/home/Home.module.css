@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  margin: auto;
+  width: 1300px;
+  gap: 20px;
+  background-color: white;
+}
+
+@media (max-width: 1300px) {
+  .container {
+    flex-direction: column;
+    width: auto;
+  }
+}
+
+@media (max-width: 1050px) {
+  .container {
+    align-items: start;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 670px) {
+  .container {
+    gap: 24px;
+  }
+}
