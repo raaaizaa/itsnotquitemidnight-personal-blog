@@ -79,7 +79,7 @@ export async function getHeadline() {
           id: item.id,
           url: indexMd.raw_url,
           headline: firstLine,
-          tag: item.description || 'No description provided',
+          tag: item.description,
           cutted_description: cuttedDescription,
           created_at: item.created_at,
           first_image: firstImage,
@@ -125,7 +125,7 @@ export async function getPostDetail(id) {
 
     const postDetails = {
       content: formattedContent,
-      description: data.description,
+      tag: data.description,
       created_at: data.created_at,
     };
 

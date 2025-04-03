@@ -1,6 +1,3 @@
-'use client';
-
-import { useEffect, useState } from 'react';
 import { PostProps } from '@/types/post';
 import { formatDate } from '@/utils/date-utils';
 import Link from 'next/link';
@@ -9,19 +6,9 @@ import Image from 'next/image';
 import styles from './PostCard.module.css';
 
 export default function PostCard({ post }: { post: PostProps }) {
-  const [isClient, setIsClient] = useState(false);
-  const { headline, first_image, created_at, id, cutted_description } = post;
+  const { headline, first_image, created_at, id, cutted_description, tag } =
+    post;
   const formatted_created_at = formatDate(created_at);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  const formatted_headline = isClient
-    ? headline.length > 150
-      ? `${headline.substring(0, 150)}...`
-      : headline
-    : '';
 
   return (
     <Link href={`/post/${id}`} className={styles.wrapper}>
@@ -32,7 +19,10 @@ export default function PostCard({ post }: { post: PostProps }) {
             <p
               className={styles.label}
               dangerouslySetInnerHTML={{
-                __html: formatted_headline,
+                __html:
+                  headline.length > 150
+                    ? `${headline.substring(0, 150)}...`
+                    : headline,
               }}
             />
             <div className={styles.textInfoContainer}>
@@ -40,7 +30,10 @@ export default function PostCard({ post }: { post: PostProps }) {
                 className={styles.description}
                 dangerouslySetInnerHTML={{ __html: cutted_description }}
               />
-              <p className={styles.date}>{formatted_created_at}</p>
+              <div className={styles.footer}>
+                {tag && <p className={styles.tag}>{tag}</p>}
+                <p className={styles.date}>{formatted_created_at}</p>
+              </div>
             </div>
           </div>
           {first_image ? (

@@ -25,6 +25,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
 }
 
 .textContainer {
@@ -70,6 +71,22 @@
   width: 160px;
   height: 107px;
   object-fit: cover;
+  max-width: none;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tag {
+  font-size: 14px;
+  background-color: #f2f2f2;
+  border-radius: 6px;
+  padding: 4px 8px 4px 8px;
+  width: 64px;
+  text-align: center;
 }
 
 @media (max-width: 800px) {
@@ -86,7 +103,8 @@
     font-size: 14px;
   }
 
-  .date {
+  .date,
+  .tag {
     font-size: 12px;
   }
 
@@ -98,9 +116,13 @@
 }
 
 @media (max-width: 600px) {
-
   .date {
     font-size: 10px;
+  }
+
+  .tag {
+    font-size: 10px;
+    width: 48px;
   }
 
   .image,

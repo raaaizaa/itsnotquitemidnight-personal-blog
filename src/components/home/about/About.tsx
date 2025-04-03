@@ -11,8 +11,8 @@ export default function About() {
         <Image
           src={portrait}
           className={styles.image}
-          width={1000}
-          height={1000}
+          width={500}
+          height={500}
           quality={50}
           alt="portrait"
         />
