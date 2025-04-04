@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "next": "15.2.4",
+    "puppeteer": "^24.6.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-helmet": "^6.1.0",
@@ -26,6 +27,7 @@
     "eslint-config-next": "15.2.4",
     "markdown-it": "^13.0.2",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
   }
 }
