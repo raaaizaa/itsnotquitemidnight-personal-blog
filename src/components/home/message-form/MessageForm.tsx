@@ -20,11 +20,6 @@ export default function MessageForm() {
     styles: 'basic',
   });
   const [isLoading, setLoading] = useState(false);
-  const [reveal, setReveal] = useState(false);
-
-  const handleReveal = () => {
-    setReveal(!reveal);
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -66,10 +61,6 @@ export default function MessageForm() {
     <div className={styles.container}>
       <div>
         <p className={styles.label}>Send me a message</p>
-        <p className={styles.question} onClick={handleReveal}>
-          Where will this message be sent?
-        </p>
-        {reveal && <p className={styles.answer}>Google Sheets.</p>}
       </div>
       <form onSubmit={handleSubmit} className={styles.formContainer}>
         <div className={styles.inputContainer}>
