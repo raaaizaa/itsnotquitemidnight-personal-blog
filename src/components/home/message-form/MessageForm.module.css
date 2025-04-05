@@ -77,16 +77,20 @@
 }
 
 .submitButton {
-  font-family: 'InterRegular';
-  font-size: 16px;
-  padding: 12px;
+  font-family: 'InterBold';
+  font-size: 14px;
+  padding: 10px 0;
   border: none;
-  border-radius: 12px;
+  border-radius: 4px;
   background-color: black;
   color: white;
+  text-align: center;
+  transition: all 200ms ease-in-out;
+}
+
+.submitButton:hover {
+  background-color: #1a1a1a;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
 }
 
 .submitText {

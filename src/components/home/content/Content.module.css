@@ -8,32 +8,41 @@
 
 .switcher {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
   justify-content: center;
+  gap: 8px;
+  background-color: #f2f2f2;
+  padding: 6px;
+  border-radius: 4px;
+  width: 100%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: all 200ms ease-in-out;
 }
 
 .switcherButton {
   font-family: 'InterBold';
-  flex-grow: 1;
-  flex-basis: calc(50% - 4px);
-  text-align: center;
-  padding: 6px 0px 6px 0px;
-  border: 1px solid black;
+  font-size: 14px;
+  padding: 10px 0;
+  border: none;
   border-radius: 4px;
+  background-color: transparent;
+  color: #4b4b4b;
+  flex: 1;
+  text-align: center;
+  transition: all 200ms ease-in-out;
 }
 
 .switcherButton:hover {
   cursor: pointer;
-  background-color: rgb(242, 242, 242);
-  transition: ease-in-out;
-  transition-duration: 300ms;
+  background-color: #e0e0e0; /* hover saat belum aktif */
 }
 
 .switcherButtonActive {
   background-color: black;
   color: white;
+}
+
+.switcherButtonActive:hover {
+  background-color: #1a1a1a; /* hover saat aktif */
 }
 
 @media (max-width: 670px) {
