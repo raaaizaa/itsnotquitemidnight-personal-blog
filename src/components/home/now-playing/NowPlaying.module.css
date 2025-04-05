@@ -21,7 +21,7 @@
   text-decoration-thickness: 3px;
 }
 
-@media (max-width: 1050px){
+@media (max-width: 1300px){
   .container{
     width: auto;
   }

@@ -11,17 +11,24 @@ export default function Content({ posts, board }) {
   const ContentSwitcher = () => {
     return (
       <div className={styles.switcher}>
-        <a onClick={() => setView('Blog')} className={styles.switcherButton}>
+        <a
+          onClick={() => setView('Blog')}
+          className={`${styles.switcherButton} ${
+            view === 'Blog' ? styles.switcherButtonActive : ''
+          }`}>
           Blog
         </a>
         <a
           onClick={() => setView('Cam Roll')}
-          className={styles.switcherButton}>
+          className={`${styles.switcherButton} ${
+            view === 'Cam Roll' ? styles.switcherButtonActive : ''
+          }`}>
           Cam Roll
         </a>
       </div>
     );
   };
+
   // return view === 'Blog' && (
   //   <BlogPosts data={posts}/>
   // )

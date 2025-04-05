@@ -1,23 +1,45 @@
-.container{
-    display: flex;
-    flex-direction: column;
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  padding: 36px;
+  width: 100%;
+}
+
+.switcher {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+.switcherButton {
+  font-family: 'InterBold';
+  flex-grow: 1;
+  flex-basis: calc(50% - 4px);
+  text-align: center;
+  padding: 6px 0px 6px 0px;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.switcherButton:hover {
+  cursor: pointer;
+  background-color: rgb(242, 242, 242);
+  transition: ease-in-out;
+  transition-duration: 300ms;
+}
+
+.switcherButtonActive {
+  background-color: black;
+  color: white;
+}
+
+@media (max-width: 670px) {
+  .container {
+    padding: 24px;
+    box-sizing: border-box;
     width: 100%;
-    gap: 36px;
-    margin: 36px 0px 36px 0px;
-}
-
-.switcher{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.switcherButton{
-    flex-grow: 1;
-    flex-basis: 50%;
-    text-align: center;
-}
-
-.switcherButton:hover{
-    cursor: pointer;
+  }
 }

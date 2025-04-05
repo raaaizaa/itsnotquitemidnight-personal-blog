@@ -17,7 +17,7 @@
   display: none;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
   .divider {
     border-left: none;
     width: auto;
@@ -32,9 +32,6 @@
     display: block;
     border-left: 1px solid rgb(242, 242, 242);
   }
-}
-
-@media (max-width: 1050px) {
   .aboutContainer {
     flex-direction: column;
   }
