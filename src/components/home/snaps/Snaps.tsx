@@ -22,17 +22,28 @@ export default function Snaps({ board }) {
       </p>
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 2, 750: 3, 900: 4 }}>
         <Masonry>
-          {board.map((image, key) => (
-            <Image
-              src={image}
-              alt={`camroll-${key}`}
-              width={500}
-              height={500}
-              quality={30}
-              key={key}
-              className={styles.image}
-            />
-          ))}
+          {board
+            ? board.map((image, key) => (
+                <Image
+                  src={image}
+                  alt={`camroll-${key}`}
+                  width={500}
+                  height={500}
+                  quality={30}
+                  key={key}
+                  className={styles.image}
+                />
+              ))
+            : Array.from({ length: 20 }).map((_, index) => {
+                const randomHeight = Math.floor(Math.random() * 150) + 150;
+                return (
+                  <div
+                    key={index}
+                    className={styles.imageSkeleton}
+                    style={{ height: `${randomHeight}px` }}
+                  />
+                );
+              })}
         </Masonry>
       </ResponsiveMasonry>
     </div>

@@ -14,8 +14,10 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-helmet": "^6.1.0",
+    "react-markdown": "^10.1.0",
     "react-responsive-masonry": "^2.7.1",
-    "react-router-dom": "^7.4.1"
+    "react-router-dom": "^7.4.1",
+    "rehype-raw": "^7.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

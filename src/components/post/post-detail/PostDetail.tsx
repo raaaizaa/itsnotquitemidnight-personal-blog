@@ -2,6 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 import { PostDetailProps } from '@/types/post';
 import PacmanLoading from '@/components/shared/loading/PacmanLoading';
 import portrait from '../../../../public/github-portrait.jpg';
@@ -47,11 +49,25 @@ export default function PostDetail({ post }: { post: PostDetailProps | null }) {
         </div>
       </Link>
       {tag && <div className={styles.tag}>{tag}</div>}
-      <div
-        // @ts-expect-error ignore the html issue
-        dangerouslySetInnerHTML={{ __html: content }}
-        className={styles.content}
-      />
+      <div className={styles.content}>
+        <ReactMarkdown
+          rehypePlugins={[rehypeRaw]}
+          components={{
+            img: ({ src = '', alt = '' }) => (
+              <Image
+                priority
+                src={src}
+                alt={alt}
+                width={800}
+                height={500}
+                quality={30}
+                layout="responsive"
+              />
+            ),
+          }}>
+          {content}
+        </ReactMarkdown>
+      </div>
     </div>
   );
 }
