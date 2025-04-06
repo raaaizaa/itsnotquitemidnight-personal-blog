@@ -36,5 +36,5 @@ jobs:
       - name: Push Changes
         run: |
           git add .
-          git commit -m "chore: update Pinterest board images 🖼️"
+          git diff --cached --quiet || git commit -m "chore(snaps): update pinterest board images"
           git push
