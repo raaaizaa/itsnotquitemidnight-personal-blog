@@ -1,15 +1,15 @@
 .spotifyCardContainer {
   display: flex;
   flex-direction: column;
-  width: fit-content;
+  width: 100%;
   font-weight: 600;
   margin: 0;
   gap: 24px;
 }
 
 .albumAnchor {
-  width: fit-content;
-  height: fit-content;
+  width: 100%;
+  height: 100%;
 }
 
 .spotifyImage {
@@ -49,6 +49,11 @@
     width: 250px;
     height: 250px;
   }
+
+  .albumAnchor {
+    width: fit-content;
+    height: fit-content;
+  }
   .spotifyCardContainer {
     flex-direction: row;
     align-items: center;
@@ -63,6 +68,11 @@
 
   .spotifyTextContainer {
     gap: 0px;
+  }
+
+  .albumAnchor {
+    width: 100%;
+    height: 100%;
   }
 
   .spotifyImage {
