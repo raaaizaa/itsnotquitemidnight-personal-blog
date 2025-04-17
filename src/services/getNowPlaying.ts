@@ -1,7 +1,17 @@
+import { TrackProps } from '@/types/track';
+import { create } from 'zustand';
+
 const CLIENT_ID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET;
 const REFRESH_TOKEN = process.env.NEXT_PUBLIC_SPOTIFY_REFRESH_TOKEN;
 const TOKEN = btoa(`${CLIENT_ID}:${CLIENT_SECRET}`);
+
+interface SpotifyState {
+  nowPlaying: TrackProps | null;
+  lastPlayed: TrackProps | null;
+  isFetching: boolean;
+  fetchNowPlaying: () => Promise<void>;
+}
 
 async function getAccessToken(): Promise<string> {
   try {
@@ -95,19 +105,29 @@ async function getLastPlayed(accessToken: string) {
   }
 }
 
-export default async function getNowPlaying() {
-  try {
-    const accessToken = await getAccessToken();
-    const playingStatus = await getPlayingStatus(accessToken);
+export const useNowPlayingStore = create<SpotifyState>((set, get) => ({
+  nowPlaying: null,
+  lastPlayed: null,
+  isFetching: false, // Add a fetching state to prevent concurrent requests
+  fetchNowPlaying: async () => {
+    if (get().isFetching) return; // Prevent concurrent fetches
+    set({ isFetching: true });
 
-    if (playingStatus) {
-      return playingStatus;
+    try {
+      const accessToken = await getAccessToken();
+      const playing = await getPlayingStatus(accessToken);
+
+      if (playing) {
+        set({ nowPlaying: playing, lastPlayed: null });
+      } else {
+        const last = await getLastPlayed(accessToken);
+        set({ nowPlaying: null, lastPlayed: last });
+      }
+    } catch (err) {
+      console.error('Error fetching Spotify data:', err);
+      // Optionally set an error state
+    } finally {
+      set({ isFetching: false }); // Ensure fetching flag is reset
     }
-
-    const lastPlayed = await getLastPlayed(accessToken);
-    return lastPlayed;
-  } catch (error) {
-    console.error('Error in getNowPlaying:', error);
-    throw error;
-  }
-}
+  },
+}));

@@ -1,11 +1,14 @@
 .container {
   display: flex;
-  padding: 8px 72px 8px 72px;
+  padding: 8px 36px;
   height: 50px;
   align-items: center;
+  justify-content: space-between;
   background-color: white;
   border-bottom: 0.5px solid rgb(242, 242, 242);
   position: sticky;
+  margin: auto;
+  width: 1300px;
   left: 0;
   top: 0;
   right: 0;
@@ -21,6 +24,12 @@
   font-smooth: always;
 }
 
+@media (max-width: 1300px) {
+  .container {
+    width: auto;
+  }
+}
+
 @media (max-width: 800px) {
   .container {
     padding: 6px 28px 6px 28px;
@@ -30,7 +39,7 @@
   }
 }
 
-@media (max-width: 600px){
+@media (max-width: 600px) {
   .container {
     padding: 4px 24px 4px 24px;
   }
