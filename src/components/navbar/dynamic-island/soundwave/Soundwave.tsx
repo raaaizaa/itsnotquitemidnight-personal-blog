@@ -1,29 +1,33 @@
 'use client';
 
 import React, { useEffect } from 'react';
-
 import styles from './Soundwave.module.css';
 
-export default function Soundwave() {
+export default function Soundwave({ isPlaying }) {
   useEffect(() => {
-    const bars = document.querySelectorAll('.bar');
-    bars.forEach((bar, index) => {
-      const randomDelay = Math.random() * 2; // Random delay between 0 and 2 seconds
-      bar.style.setProperty('--delay', randomDelay);
+    if (!isPlaying) return;
+
+    const bars = document.querySelectorAll(`.${styles.bar}`);
+
+    // again, i don't really know what happens here actually.
+    bars.forEach((bar) => {
+      const element = bar as HTMLElement;
+      const randomDelay = Math.random() * 2;
+      element.style.setProperty('--delay', randomDelay.toString());
     });
-  }, []);
+  }, [isPlaying]);
 
   return (
     <div className={styles.equalizer}>
-      <div className={styles.bar}></div>
-      <div className={styles.bar}></div>
-      <div className={styles.bar}></div>
-      <div className={styles.bar}></div>
-      <div className={styles.bar}></div>
-      <div className={styles.bar}></div>
-      <div className={styles.bar}></div>
-      <div className={styles.bar}></div>
-      <div className={styles.bar}></div>
+      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`}></div>
+      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`}></div>
+      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`}></div>
+      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`}></div>
+      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`}></div>
+      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`}></div>
+      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`}></div>
+      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`}></div>
+      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`}></div>
     </div>
   );
 }

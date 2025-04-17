@@ -5,14 +5,19 @@
   justify-items: center;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: inherit;
 }
 
 .bar {
   width: 2px;
   background: linear-gradient(to top, #675470, #395978);
   animation: bounce 0.3s ease-in-out infinite alternate;
-  animation-delay: calc(-0.2s * var(--delay)); /* Random delay for each bar */
+  animation-delay: calc(-0.2s * var(--delay));
+}
+
+.paused {
+  animation: none !important;
+  height: 8px; /* flat look */
 }
 
 .bar:nth-child(odd) {
