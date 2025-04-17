@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 import styles from './Pagination.module.css';
 
 interface Props {
@@ -11,26 +13,42 @@ export default function Pagination({
   totalPages,
   handlePageChange,
 }: Props) {
+  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+  const handlePrev = () => {
+    if (currentPage > 1) handlePageChange(currentPage - 1);
+  };
+
+  const handleNext = () => {
+    if (currentPage < totalPages) handlePageChange(currentPage + 1);
+  };
+
   return (
     <div className={styles.pagination}>
-      <button
-        onClick={() => handlePageChange(currentPage - 1)}
-        disabled={currentPage === 1}>
+      <motion.button
+        onClick={handlePrev}
+        disabled={currentPage === 1}
+        whileTap={{ scale: 0.95 }}>
         {`<`}
-      </button>
-      {Array.from({ length: totalPages }).map((_, index) => (
-        <button
-          key={index}
-          className={currentPage === index + 1 ? styles.activePage : ''}
-          onClick={() => handlePageChange(index + 1)}>
-          {index + 1}
-        </button>
+      </motion.button>
+
+      {pageNumbers.map((page) => (
+        <motion.button
+          key={page}
+          onClick={() => handlePageChange(page)}
+          className={currentPage === page ? styles.activePage : ''}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}>
+          {page}
+        </motion.button>
       ))}
-      <button
-        onClick={() => handlePageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}>
+
+      <motion.button
+        onClick={handleNext}
+        disabled={currentPage === totalPages}
+        whileTap={{ scale: 0.95 }}>
         {`>`}
-      </button>
+      </motion.button>
     </div>
   );
 }

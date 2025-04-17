@@ -1,29 +1,14 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { TrackProps } from '@/types/track';
-import getNowPlaying from '@/services/getNowPlaying';
+import { useNowPlayingStore } from '@/services/getNowPlaying';
 import LoadingSpotifyCard from './LoadingSpotifyCard';
 import SpotifyCard from './SpotifyCard';
 
 import styles from './NowPlaying.module.css';
 
 export default function NowPlaying() {
-  const [data, setData] = useState<TrackProps>();
-
-  useEffect(() => {
-    const fetchNowPlaying = async () => {
-      try {
-        const data = await getNowPlaying();
-        setData(data);
-      } catch (error) {
-        console.error('Error fetching now playing data:', error);
-      }
-    };
-    fetchNowPlaying();
-    const interval = setInterval(fetchNowPlaying, 10000);
-    return () => clearInterval(interval);
-  }, []);
+  const { nowPlaying, lastPlayed } = useNowPlayingStore();
+  const data = nowPlaying || lastPlayed;
 
   if (!data) {
     return (
