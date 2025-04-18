@@ -22,6 +22,20 @@ export default function Navbar() {
   }, [fetchNowPlaying]);
 
   useEffect(() => {
+    const handleScroll = () => {
+      setClicked(false);
+    };
+  
+    if (click) {
+      window.addEventListener('scroll', handleScroll);
+    }
+  
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [click]);
+
+  useEffect(() => {
     if (nowPlaying) {
       setDataType({ title: 'Now playing on Spotify', soundwave: true });
     } else {

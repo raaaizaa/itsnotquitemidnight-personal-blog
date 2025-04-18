@@ -5,7 +5,12 @@ import Soundwave from '../dynamic-island/soundwave/Soundwave';
 
 import styles from './DetailedDynamicIsland.module.css';
 
-export default function DetailedDynamicIsland({ data, onClick, title, soundwave }) {
+export default function DetailedDynamicIsland({
+  data,
+  onClick,
+  title,
+  soundwave,
+}) {
   const { albumImage, trackName, artistName, trackUrl } = data || {};
 
   return (
