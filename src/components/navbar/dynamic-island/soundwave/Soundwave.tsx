@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
+
 import styles from './Soundwave.module.css';
 
 export default function Soundwave({ isPlaying }) {
@@ -19,15 +20,15 @@ export default function Soundwave({ isPlaying }) {
 
   return (
     <div className={styles.equalizer}>
-      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`}></div>
-      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`}></div>
-      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`}></div>
-      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`}></div>
-      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`}></div>
-      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`}></div>
-      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`}></div>
-      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`}></div>
-      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`}></div>
+      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`} />
+      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`} />
+      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`} />
+      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`} />
+      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`} />
+      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`} />
+      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`} />
+      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`} />
+      <div className={`${styles.bar} ${!isPlaying ? styles.paused : ''}`} />
     </div>
   );
 }

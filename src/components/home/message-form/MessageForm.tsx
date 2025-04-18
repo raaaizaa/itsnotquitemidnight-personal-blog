@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { FormDataProps } from '@/types/formData';
 import postMessage from '@/services/postMessage';
 import { getCurrentDate } from '@/utils/date-utils';
-import PacmanLoading from '@/components/shared/loading/PacmanLoading';
+import { motion } from 'framer-motion';
 
 import styles from './MessageForm.module.css';
 
@@ -99,16 +99,29 @@ export default function MessageForm() {
             {isLoading ? `Loading...` : status.message}
           </p>
         )}
-        <button
+        <motion.button
           type="submit"
           className={styles.submitButton}
-          disabled={isLoading}>
-          {isLoading ? (
-            <PacmanLoading />
-          ) : (
-            <p className={styles.submitText}>Submit</p>
-          )}
-        </button>
+          disabled={isLoading}
+          whileHover={{
+            scale: 1.06,
+            transition: {
+              type: 'spring',
+              stiffness: 100,
+              damping: 10,
+              duration: 0.2
+            },
+          }}
+          whileTap={{
+            scale: 0.97,
+            transition: {
+              type: 'spring',
+              stiffness: 300,
+              damping: 20,
+            },
+          }}>
+          <p className={styles.submitText}>Submit</p>
+        </motion.button>
       </form>
     </div>
   );

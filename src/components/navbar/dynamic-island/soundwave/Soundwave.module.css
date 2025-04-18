@@ -1,6 +1,6 @@
 .equalizer {
   display: grid;
-  grid-template-columns: repeat(9, 1fr); /* 9 bars */
+  grid-template-columns: repeat(9, 1fr);
   gap: 2px;
   justify-items: center;
   align-items: center;
@@ -17,15 +17,15 @@
 
 .paused {
   animation: none !important;
-  height: 8px; /* flat look */
+  height: 2px;
 }
 
 .bar:nth-child(odd) {
-  --delay: 1; /* Will be overwritten by JavaScript */
+  --delay: 1; 
 }
 
 .bar:nth-child(even) {
-  --delay: 2; /* Will be overwritten by JavaScript */
+  --delay: 2; 
 }
 
 @keyframes bounce {

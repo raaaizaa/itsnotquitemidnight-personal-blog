@@ -1,11 +1,11 @@
 .container {
   background-color: black;
   padding: 8px;
-  border-radius: 24px;
+  border-radius: 32px;
   color: white;
 }
 
-.container:hover{
+.container:hover {
   cursor: pointer;
 }
 
@@ -19,6 +19,7 @@
 .image {
   width: 24px;
   height: 24px;
+  border-radius: 4px;
 }
 
 .trackText {
@@ -26,9 +27,164 @@
   transition: all 0.5s ease;
 }
 
-@media(max-width:600px){
+@media (max-width: 600px) {
   .image {
     width: 20px;
     height: 20px;
+  }
+}
+
+.expandedCenterWrapper {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.expandedWrapper {
+  background-color: black;
+  border-radius: 32px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  width: 500px;
+  height: 180px;
+  pointer-events: all;
+}
+
+.expandedWrapper:hover {
+  cursor: pointer;
+}
+
+.expandedTrackInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.expandedImage {
+  border-radius: 20px;
+  height: 150px;
+  width: 150px;
+}
+
+.expandedTextWrapper {
+  line-height: 1.4;
+}
+
+.expandedTitle {
+  font-size: 12px;
+  font-family: 'InterLight';
+}
+
+.expandedTrackName {
+  font-size: 16px;
+  font-family: 'InterBold';
+}
+
+.expandedTrackName:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.expandedArtistName {
+  font-size: 14px;
+  font-family: 'InterRegular';
+}
+
+.expandedSoundwaveWrapper {
+  scale: 1.75;
+  margin: 0px 24px;
+}
+
+@media (max-width: 600px) {
+  .expandedWrapper {
+    width: 380px;
+    height: 137px;
+  }
+
+  .expandedImage {
+    width: 107px;
+    height: 107px;
+  }
+
+  .expandedSoundwaveWrapper {
+    scale: 1.5;
+    margin: 0 16px;
+  }
+
+  .expandedTitle {
+    font-size: 11px;
+  }
+
+  .expandedTrackName {
+    font-size: 14px;
+  }
+
+  .expandedArtistName {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .expandedWrapper {
+    width: 300px;
+    height: 108px;
+  }
+
+  .expandedImage {
+    width: 85px;
+    height: 85px;
+  }
+
+  .expandedSoundwaveWrapper {
+    scale: 1.25;
+    margin: 0 12px;
+  }
+
+  .expandedTitle {
+    font-size: 10px;
+  }
+
+  .expandedTrackName {
+    font-size: 13px;
+  }
+
+  .expandedArtistName {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 320px) {
+  .expandedWrapper {
+    width: 270px;
+    height: 96px;
+    padding: 10px;
+  }
+
+  .expandedImage {
+    width: 75px;
+    height: 75px;
+  }
+
+  .expandedSoundwaveWrapper {
+    display: none;
+  }
+
+  .expandedTitle {
+    font-size: 9px;
+  }
+
+  .expandedTrackName {
+    font-size: 12px;
+  }
+
+  .expandedArtistName {
+    font-size: 10px;
   }
 }
