@@ -33,6 +33,7 @@ export default function DynamicIsland() {
   useEffect(() => {
     const handleScroll = () => {
       setIsClicked(false);
+      setIsHovered(false)
     };
 
     if (isClicked) {
