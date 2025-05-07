@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { getPostDetail } from '@/services/getPost';
+import { getPostDetail } from '@/services/getPostDetail';
 import { getPostId } from '@/utils/url-utils';
 import ImagePlaceholder from '../../../../public/meta-image-formatted.png';
 import PostDetailWrapper from '@/wrapper/PostDetailWrapper';
