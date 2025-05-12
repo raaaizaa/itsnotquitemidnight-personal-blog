@@ -71,7 +71,7 @@ export async function GET(req: Request) {
               fontFamily: 'InterBold',
               textAlign: 'start',
             }}>
-            {title}
+            {title.length > 100 ? `${title.substring(0, 100)}...` : title}
           </p>
           <p
             style={{
