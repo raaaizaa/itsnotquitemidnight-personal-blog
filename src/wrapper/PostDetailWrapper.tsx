@@ -1,5 +1,5 @@
 import PostDetail from '@/components/post/post-detail/PostDetail';
-import { getPostDetail } from '@/services/getPost';
+import { getPostDetail } from '@/services/getPostDetail';
 import { getPostId } from '@/utils/url-utils';
 
 export default async function PostDetailWrapper() {

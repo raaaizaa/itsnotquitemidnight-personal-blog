@@ -1,9 +1,21 @@
-import { getHeadline } from '@/services/getPost';
-import board from '../../data/pinterest-board.json'
-import Content from '@/components/home/content/Content';
+'use client';
 
-export default async function ContentWrapper() {
-  const posts = await getHeadline();
-  
-  return <Content posts={posts} board={board}/>
+import { getHeadline } from '@/services/getPost';
+import board from '../../data/pinterest-board.json';
+import Content from '@/components/home/content/Content';
+import { useEffect, useState } from 'react';
+import { PostProps } from '@/types/post';
+
+export default function ContentWrapper() {
+  const [posts, setPosts] = useState<PostProps[]>();
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const posts = await getHeadline();
+      setPosts(posts);
+    };
+    fetchPosts();
+  }, []);
+
+  return <Content posts={posts} board={board} />;
 }
