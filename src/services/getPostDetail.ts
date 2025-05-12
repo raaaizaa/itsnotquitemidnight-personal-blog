@@ -4,10 +4,10 @@ import { getPathname } from '@/utils/url-utils';
 const TOKEN = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
 
 const md = new MarkdownIt({
-    html: true,
-    linkify: true,
-    typographer: true,
-  });
+  html: true,
+  linkify: true,
+  typographer: true,
+});
 
 export async function getPostDetail(id: string) {
   try {
@@ -50,6 +50,8 @@ export async function getPostDetail(id: string) {
       image: image,
       description: cuttedDescription,
       url: await getPathname(),
+      created_at: data.created_at,
+      tag: data.description,
     };
 
     return { postDetails, postSEO };
