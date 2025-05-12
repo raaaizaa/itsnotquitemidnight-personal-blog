@@ -1,20 +1,44 @@
 import { ImageResponse } from 'next/og';
-
 export const runtime = 'edge';
+
+async function loadGoogleFont(text: string, weight: 400 | 700) {
+  const url = `https://fonts.googleapis.com/css2?family=Inter:wght@${weight}&text=${encodeURIComponent(
+    text
+  )}`;
+
+  try {
+    const css = await (await fetch(url)).text();
+    const resource = css.match(
+      /src: url\((.+)\) format\('(opentype|truetype)'\)/
+    );
+
+    if (resource) {
+      const response = await fetch(resource[1]);
+      if (response.status === 200) {
+        return await response.arrayBuffer();
+      }
+    }
+
+    throw new Error('Failed to load font resource');
+  } catch (error) {
+    console.error('Font loading error:', error);
+    throw error;
+  }
+}
+
+async function loadInterRegular(text: string) {
+  return loadGoogleFont(text, 400);
+}
+
+async function loadInterBold(text: string) {
+  return loadGoogleFont(text, 700);
+}
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const title = searchParams.get('title') || '';
   const date = searchParams.get('date') || '';
   const tag = searchParams.get('tag') || '';
-
-  const interFont = await fetch(
-    new URL('/public/fonts/Inter_24pt-Bold.ttf', import.meta.url).toString()
-  ).then((res) => res.arrayBuffer());
-
-  const interRegular = await fetch(
-    new URL('/public/fonts/Inter_24pt-Regular.ttf', import.meta.url).toString()
-  ).then((res) => res.arrayBuffer());
 
   return new ImageResponse(
     (
@@ -52,12 +76,14 @@ export async function GET(req: Request) {
                 borderRadius: '6px',
                 padding: '4px 8px',
                 textAlign: 'center',
-                fontFamily: 'InterRegular',
+                fontFamily: 'Inter',
+                fontWeight: 400,
                 color: 'black',
               }}>
               {tag}
             </div>
-            <div style={{ display: 'flex', fontFamily: 'InterRegular' }}>
+            <div
+              style={{ display: 'flex', fontFamily: 'Inter', fontWeight: 400 }}>
               {new Date(date).toLocaleDateString('en-US', {
                 day: '2-digit',
                 month: 'short',
@@ -68,7 +94,8 @@ export async function GET(req: Request) {
           <p
             style={{
               fontSize: 72,
-              fontFamily: 'InterBold',
+              fontFamily: 'Inter',
+              fontWeight: 700,
               textAlign: 'start',
             }}>
             {title.length > 100 ? `${title.substring(0, 100)}...` : title}
@@ -76,7 +103,8 @@ export async function GET(req: Request) {
           <p
             style={{
               fontSize: 24,
-              fontFamily: 'InterRegular',
+              fontFamily: 'Inter',
+              fontWeight: 400,
               textAlign: 'start',
               marginTop: 0,
               textDecoration: 'underline',
@@ -93,15 +121,15 @@ export async function GET(req: Request) {
       height: 630,
       fonts: [
         {
-          name: 'InterBold',
-          data: interFont,
-          weight: 700,
+          name: 'Inter',
+          data: await loadInterRegular(title + date + tag),
+          weight: 400,
           style: 'normal',
         },
         {
-          name: 'InterRegular',
-          data: interRegular,
-          weight: 400,
+          name: 'Inter',
+          data: await loadInterBold(title),
+          weight: 700,
           style: 'normal',
         },
       ],
