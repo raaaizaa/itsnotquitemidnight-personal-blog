@@ -32,7 +32,11 @@ async function scrapePinterestBoard() {
     defaultViewport: { width: 1280, height: 1000 },
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
+  const cookies = JSON.parse(fs.readFileSync('./cookies.json'))
+  await browser.setCookie(...cookies);
+
   const page = await browser.newPage();
+
   await page.goto('https://www.pinterest.com/whatiamseeing/phone-cam-roll/', {
     waitUntil: 'networkidle2',
   });
