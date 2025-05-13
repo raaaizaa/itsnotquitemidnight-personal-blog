@@ -30,6 +30,9 @@ jobs:
       - name: Run Scrape Script
         run: node ./src/scripts/scrape-board.mjs
 
+      - name: Clean up cookies.json
+        run: rm cookies.json
+
       - name: Setup Git for pushing
         run: |
           git config user.name "github-actions[bot]"
