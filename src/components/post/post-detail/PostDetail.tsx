@@ -5,6 +5,7 @@ import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import { PostDetailProps } from '@/types/post';
+import { motion } from 'framer-motion';
 import PacmanLoading from '@/components/shared/loading/PacmanLoading';
 import portrait from '../../../../public/github-portrait.jpg';
 
@@ -24,7 +25,18 @@ export default function PostDetail({ post }: { post: PostDetailProps | null }) {
   return (
     <div className={styles.container}>
       <Link href="https://gist.github.com/raaaizaa" target="_blank">
-        <div className={styles.authorContainer}>
+        <motion.div
+          className={styles.authorContainer}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+            transition: {
+              type: 'spring',
+              stiffness: 300,
+              damping: 15,
+            },
+          }}>
           <Image
             src={portrait}
             alt="portrait"
@@ -46,10 +58,29 @@ export default function PostDetail({ post }: { post: PostDetailProps | null }) {
               {`, on Gist`}
             </p>
           </div>
-        </div>
+        </motion.div>
       </Link>
-      {tag && <div className={styles.tag}>{tag}</div>}
-      <div className={styles.content}>
+      {tag && (
+        <motion.div
+          className={styles.tag}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
+          {tag}
+        </motion.div>
+      )}
+      <motion.div
+        className={styles.content}
+        initial={{ opacity: 0, y: 30 }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          transition: {
+            type: 'spring',
+            stiffness: 300,
+            damping: 15,
+          },
+        }}>
         <ReactMarkdown
           rehypePlugins={[rehypeRaw]}
           components={{
@@ -67,7 +98,7 @@ export default function PostDetail({ post }: { post: PostDetailProps | null }) {
           }}>
           {content}
         </ReactMarkdown>
-      </div>
+      </motion.div>
     </div>
   );
 }

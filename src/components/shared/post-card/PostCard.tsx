@@ -1,6 +1,8 @@
+'use client';
+
 import { PostProps } from '@/types/post';
 import { formatDate } from '@/utils/date-utils';
-import Link from 'next/link';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 import styles from './PostCard.module.css';
@@ -11,7 +13,26 @@ export default function PostCard({ post }: { post: PostProps }) {
   const formatted_created_at = formatDate(created_at);
 
   return (
-    <Link href={`/post/${id}`} className={styles.wrapper}>
+    <motion.a
+      href={`/post/${id}`}
+      className={styles.wrapper}
+      initial={{ scale: 0.8, opacity: 0 }}
+      animate={{
+        scale: 1,
+        opacity: 1,
+        transition: { type: 'spring', stiffness: 300, damping: 20 },
+      }}
+      whileTap={{ scale: 0.9 }}
+      exit={{
+        scale: 0,
+        opacity: 0,
+        transition: {
+          type: 'spring',
+          stiffness: 300,
+          damping: 20,
+          duration: 0.2,
+        },
+      }}>
       <div className={styles.divider} />
       <div className={styles.contentContainer}>
         <div className={styles.container}>
@@ -50,6 +71,6 @@ export default function PostCard({ post }: { post: PostProps }) {
           ) : null}
         </div>
       </div>
-    </Link>
+    </motion.a>
   );
 }

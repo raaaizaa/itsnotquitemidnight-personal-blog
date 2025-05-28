@@ -1,4 +1,7 @@
+'use client';
+
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 
 import styles from './Snaps.module.css';
@@ -24,15 +27,23 @@ export default function Snaps({ board }) {
         <Masonry>
           {board
             ? board.map((image, key) => (
-                <Image
-                  src={image}
-                  alt={`camroll-${key}`}
-                  width={500}
-                  height={500}
-                  quality={30}
+                <motion.div
                   key={key}
-                  className={styles.image}
-                />
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{
+                    scale: 1,
+                    opacity: 1,
+                    transition: { type: 'spring', stiffness: 300, damping: 20 },
+                  }}>
+                  <Image
+                    src={image}
+                    alt={`camroll-${key}`}
+                    width={500}
+                    height={500}
+                    quality={30}
+                    className={styles.image}
+                  />
+                </motion.div>
               ))
             : Array.from({ length: 20 }).map((_, index) => {
                 const randomHeight = Math.floor(Math.random() * 150) + 150;

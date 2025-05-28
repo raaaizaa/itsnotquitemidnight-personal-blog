@@ -28,7 +28,13 @@ export default function Pagination({
       <motion.button
         onClick={handlePrev}
         disabled={currentPage === 1}
-        whileTap={{ scale: 0.95 }}>
+        whileTap={{ scale: 0.95 }}
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{
+          scale: 1,
+          opacity: 1,
+          transition: { type: 'spring', stiffness: 300, damping: 20 },
+        }}>
         {`<`}
       </motion.button>
 
@@ -38,7 +44,13 @@ export default function Pagination({
           onClick={() => handlePageChange(page)}
           className={currentPage === page ? styles.activePage : ''}
           whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}>
+          whileTap={{ scale: 0.95 }}
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{
+            scale: 1,
+            opacity: 1,
+            transition: { type: 'spring', stiffness: 300, damping: 20 },
+          }}>
           {page}
         </motion.button>
       ))}
@@ -46,7 +58,13 @@ export default function Pagination({
       <motion.button
         onClick={handleNext}
         disabled={currentPage === totalPages}
-        whileTap={{ scale: 0.95 }}>
+        whileTap={{ scale: 0.95 }}
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{
+          scale: 1,
+          opacity: 1,
+          transition: { type: 'spring', stiffness: 300, damping: 20 },
+        }}>
         {`>`}
       </motion.button>
     </div>
