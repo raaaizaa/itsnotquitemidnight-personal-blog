@@ -42,6 +42,7 @@ export default function Snaps({ board }) {
                     height={500}
                     quality={30}
                     className={styles.image}
+                    loading='lazy'
                   />
                 </motion.div>
               ))

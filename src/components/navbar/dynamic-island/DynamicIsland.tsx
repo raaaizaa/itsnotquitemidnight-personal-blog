@@ -5,6 +5,7 @@ import { useNowPlayingStore } from '@/services/getNowPlaying';
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import Soundwave from './soundwave/Soundwave';
+import { SpotifyIcon } from './assets/SpotifyIcon';
 
 import styles from './DynamicIsland.module.css';
 
@@ -24,16 +25,16 @@ export default function DynamicIsland() {
 
   useEffect(() => {
     if (nowPlaying) {
-      setDataType({ title: 'Now playing on Spotify', soundwave: true });
+      setDataType({ title: 'Now playing on', soundwave: true });
     } else {
-      setDataType({ title: 'Last played on Spotify', soundwave: false });
+      setDataType({ title: 'Last played on', soundwave: false });
     }
   }, [nowPlaying]);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsClicked(false);
-      setIsHovered(false)
+      setIsHovered(false);
     };
 
     if (isClicked) {
@@ -111,7 +112,13 @@ export default function DynamicIsland() {
                 />
               </a>
               <div className={styles.expandedTextWrapper}>
-                <p className={styles.expandedTitle}>{dataType.title}</p>
+                <div className={styles.expandedPlayingInfo}>
+                  <SpotifyIcon width={16} height={16} fill="#1DB954" />
+                  <p className={styles.expandedTitle}>
+                    {dataType.title}{' '}
+                    <a href='https://open.spotify.com/user/raaaizaa' target='_blank' className={styles.spotifyText}>Raiza`s Spotify</a>
+                  </p>
+                </div>
                 <a
                   className={styles.expandedTrackName}
                   href={trackUrl}
