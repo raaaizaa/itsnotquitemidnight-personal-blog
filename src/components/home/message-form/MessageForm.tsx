@@ -42,7 +42,7 @@ export default function MessageForm() {
       } else {
         console.error('Failed to send the message.');
         setStatus({
-          message: 'Failed to send message, please try again later.',
+          message: 'Failed to send message, please try again later. Guess he’s too lazy to pay for Google One’s monthly subscription.',
           styles: 'error',
         });
         setLoading(false);
@@ -79,7 +79,7 @@ export default function MessageForm() {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="Optional—for me to reply"
+            placeholder="Optional"
             className={styles.nameInput}
           />
         </div>

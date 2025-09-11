@@ -10,19 +10,27 @@ import styles from './BlogPosts.module.css';
 
 const POSTS_PER_PAGE = 8;
 
-export default function BlogPosts({data}: {data: PostProps[] | undefined}) {
+export default function BlogPosts({ data }: { data: PostProps[] | undefined }) {
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const tags = Array.from(new Set(data?.map(post => post.tag).filter(Boolean)));
 
-  // Calculate the displayed posts for the current page
+  const filteredPosts = selectedTag
+    ? data?.filter(post => post.tag === selectedTag)
+    : data;
+
+  const totalPages = Math.ceil((filteredPosts?.length || 0) / POSTS_PER_PAGE);
   const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
   const endIndex = startIndex + POSTS_PER_PAGE;
-  const displayedPosts = data?.slice(startIndex, endIndex);
-
-  // Handle pagination controls
-  const totalPages = Math.ceil((data?.length || 0) / POSTS_PER_PAGE);
+  const displayedPosts = filteredPosts?.slice(startIndex, endIndex);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
+  };
+
+  const handleTagClick = (tag: string | null) => {
+    setSelectedTag(tag);
+    setCurrentPage(1);
   };
 
   return (
@@ -33,6 +41,26 @@ export default function BlogPosts({data}: {data: PostProps[] | undefined}) {
         </p>
       </div>
 
+      {/* Tag Filter */}
+      <div className={styles.tagContainer}>
+        <button
+          onClick={() => handleTagClick(null)}
+          className={!selectedTag ? styles.activeTag : ''}
+        >
+          All
+        </button>
+        {tags.map(tag => (
+          <button
+            key={tag}
+            onClick={() => handleTagClick(tag)}
+            className={selectedTag === tag ? styles.activeTag : ''}
+          >
+            {tag}
+          </button>
+        ))}
+      </div>
+
+      {/* Posts */}
       {!data ? (
         <div className={styles.dataContainer}>
           {Array.from({ length: POSTS_PER_PAGE }).map((_, index) => (
