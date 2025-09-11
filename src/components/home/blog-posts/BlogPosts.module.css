@@ -27,6 +27,35 @@
   color: #6b6b6b;
 }
 
+.tagContainer {
+  display: flex;
+  gap: 12px;
+}
+
+.tag {
+  font-size: 14px;
+  background-color: #f2f2f2;
+  border-radius: 6px;
+  padding: 4px 8px 4px 8px;
+  width: fit-content;
+  text-align: center;
+}
+
+.activeTag {
+  font-size: 14px;
+  background-color: black;
+  color: white;
+  border-radius: 6px;
+  padding: 4px 8px 4px 8px;
+  width: fit-content;
+  text-align: center;
+}
+
+.activeTag:hover,
+.tag:hover {
+  cursor: pointer;
+}
+
 @media (max-width: 800px) {
   .container {
     gap: 32px;
@@ -38,6 +67,12 @@
 
   .subtitle {
     font-size: 14px;
+  }
+
+  .tagContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 }
 

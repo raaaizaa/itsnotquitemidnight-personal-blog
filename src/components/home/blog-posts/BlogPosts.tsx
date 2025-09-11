@@ -5,6 +5,7 @@ import { PostProps } from '@/types/post';
 import Pagination from './Pagination';
 import PostCard from '@/components/shared/post-card/PostCard';
 import LoadingPostCard from '@/components/shared/post-card/LoadingPostCard';
+import { motion } from 'framer-motion';
 
 import styles from './BlogPosts.module.css';
 
@@ -13,10 +14,16 @@ const POSTS_PER_PAGE = 8;
 export default function BlogPosts({ data }: { data: PostProps[] | undefined }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
-  const tags = Array.from(new Set(data?.map(post => post.tag).filter(Boolean)));
+  const tags = Array.from(
+    new Set(
+      data
+        ?.map((post) => post.tag)
+        .filter((tag): tag is string => tag !== undefined)
+    )
+  );
 
   const filteredPosts = selectedTag
-    ? data?.filter(post => post.tag === selectedTag)
+    ? data?.filter((post) => post.tag === selectedTag)
     : data;
 
   const totalPages = Math.ceil((filteredPosts?.length || 0) / POSTS_PER_PAGE);
@@ -33,6 +40,7 @@ export default function BlogPosts({ data }: { data: PostProps[] | undefined }) {
     setCurrentPage(1);
   };
 
+  console.log('selectedTag:', selectedTag);
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
@@ -43,20 +51,50 @@ export default function BlogPosts({ data }: { data: PostProps[] | undefined }) {
 
       {/* Tag Filter */}
       <div className={styles.tagContainer}>
-        <button
+        <motion.button
+          whileHover={{
+            scale: 1.2,
+            transition: {
+              type: 'spring',
+              stiffness: 180,
+              damping: 14,
+            },
+          }}
+          whileTap={{
+            scale: 0.97,
+            transition: {
+              type: 'spring',
+              stiffness: 500,
+              damping: 20,
+            },
+          }}
           onClick={() => handleTagClick(null)}
-          className={!selectedTag ? styles.activeTag : ''}
-        >
+          className={selectedTag ? styles.tag : styles.activeTag}>
           All
-        </button>
-        {tags.map(tag => (
-          <button
+        </motion.button>
+        {tags.map((tag) => (
+          <motion.button
+            whileHover={{
+              scale: 1.2,
+              transition: {
+                type: 'spring',
+                stiffness: 180,
+                damping: 14,
+              },
+            }}
+            whileTap={{
+              scale: 0.97,
+              transition: {
+                type: 'spring',
+                stiffness: 400,
+                damping: 20,
+              },
+            }}
             key={tag}
             onClick={() => handleTagClick(tag)}
-            className={selectedTag === tag ? styles.activeTag : ''}
-          >
+            className={selectedTag !== tag ? styles.tag : styles.activeTag}>
             {tag}
-          </button>
+          </motion.button>
         ))}
       </div>
 
