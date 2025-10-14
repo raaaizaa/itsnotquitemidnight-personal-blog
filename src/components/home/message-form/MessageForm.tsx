@@ -29,6 +29,16 @@ export default function MessageForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (formData.name.trim().length === 0) {
+      setStatus({ message: 'Name cannot be empty.', styles: 'error' });
+      return;
+    }
+
+    if (formData.message.trim().length === 0) {
+      setStatus({ message: 'Message cannot be empty.', styles: 'error' });
+      return;
+    }
+
     const updatedFormData = { ...formData, date: getCurrentDate() };
 
     try {
@@ -42,7 +52,8 @@ export default function MessageForm() {
       } else {
         console.error('Failed to send the message.');
         setStatus({
-          message: 'Failed to send message, please try again later. Guess he’s too lazy to pay for Google One’s monthly subscription.',
+          message:
+            'Failed to send message, please try again later. Guess he’s too lazy to pay for Google One’s monthly subscription.',
           styles: 'error',
         });
         setLoading(false);
@@ -70,7 +81,6 @@ export default function MessageForm() {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            required
             className={styles.nameInput}
           />
           <p className={styles.inputLabel}>Email: </p>
@@ -89,7 +99,6 @@ export default function MessageForm() {
             name="message"
             value={formData.message}
             onChange={handleChange}
-            required
             className={styles.messageInput}
           />
         </div>
@@ -109,7 +118,7 @@ export default function MessageForm() {
               type: 'spring',
               stiffness: 100,
               damping: 10,
-              duration: 0.2
+              duration: 0.2,
             },
           }}
           whileTap={{
