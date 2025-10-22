@@ -37,8 +37,6 @@ async function loadInterBold(text: string) {
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const title = searchParams.get('title') || '';
-  const date = searchParams.get('date') || '';
-  const tag = searchParams.get('tag') || '';
 
   return new ImageResponse(
     (
@@ -49,71 +47,23 @@ export async function GET(req: Request) {
           width: '100%',
           display: 'flex',
           justifyContent: 'flex-start',
-          alignItems: 'center',
-          padding: '0 60px',
+          alignItems: 'flex-end',
+          padding: '60px',
           lineHeight: 1.2,
         }}>
-        <div
-          style={{
-            display: 'flex',
-            borderLeft: '8px solid black',
-            height: '50%',
-            marginRight: '20px',
-          }}
-        />
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: '8px',
-            }}>
-            <div
-              style={{
-                fontSize: '14px',
-                backgroundColor: '#e5e5e5',
-                borderRadius: '6px',
-                padding: '4px 8px',
-                textAlign: 'center',
-                fontFamily: 'Inter',
-                fontWeight: 400,
-                color: 'black',
-              }}>
-              {tag}
-            </div>
-            <div
-              style={{ display: 'flex', fontFamily: 'Inter', fontWeight: 400 }}>
-              {new Date(date).toLocaleDateString('en-US', {
-                day: '2-digit',
-                month: 'short',
-                year: 'numeric',
-              })}
-            </div>
-          </div>
           <p
             style={{
-              fontSize: 72,
+              fontSize: 85,
               fontFamily: 'Inter',
               fontWeight: 700,
               textAlign: 'start',
+              borderLeft: 'solid 8px black',
+              paddingLeft: '20px',
             }}>
-            {title.length > 100 ? `${title.substring(0, 100)}...` : title}
+            {title.length > 70 ? `${title.substring(0, 70)}...` : title}
           </p>
-          <p
-            style={{
-              fontSize: 24,
-              fontFamily: 'Inter',
-              fontWeight: 400,
-              textAlign: 'start',
-              marginTop: 0,
-              textDecoration: 'underline',
-              textUnderlineOffset: '16px',
-              color: 'grey',
-            }}>
-            itsnotquitemidnight.xyz
-          </p>
-        </div>
+         
+        
       </div>
     ),
     {
@@ -122,7 +72,7 @@ export async function GET(req: Request) {
       fonts: [
         {
           name: 'Inter',
-          data: await loadInterRegular(title + date + tag),
+          data: await loadInterRegular(title),
           weight: 400,
           style: 'normal',
         },

@@ -40,7 +40,6 @@ export default function BlogPosts({ data }: { data: PostProps[] | undefined }) {
     setCurrentPage(1);
   };
 
-  console.log('selectedTag:', selectedTag);
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
