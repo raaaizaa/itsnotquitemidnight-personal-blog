@@ -108,9 +108,9 @@ async function getLastPlayed(accessToken: string) {
 export const useNowPlayingStore = create<SpotifyState>((set, get) => ({
   nowPlaying: null,
   lastPlayed: null,
-  isFetching: false, // Add a fetching state to prevent concurrent requests
+  isFetching: false,
   fetchNowPlaying: async () => {
-    if (get().isFetching) return; // Prevent concurrent fetches
+    if (get().isFetching) return; 
     set({ isFetching: true });
 
     try {
@@ -125,9 +125,9 @@ export const useNowPlayingStore = create<SpotifyState>((set, get) => ({
       }
     } catch (err) {
       console.error('Error fetching Spotify data:', err);
-      // Optionally set an error state
+    
     } finally {
-      set({ isFetching: false }); // Ensure fetching flag is reset
+      set({ isFetching: false }); 
     }
   },
 }));
