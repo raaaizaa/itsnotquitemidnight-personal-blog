@@ -6,8 +6,6 @@ import postMessage from '@/services/postMessage';
 import { getCurrentDate } from '@/utils/date-utils';
 import { motion } from 'framer-motion';
 
-import styles from './MessageForm.module.css';
-
 export default function MessageForm() {
   const [formData, setFormData] = useState<FormDataProps>({
     name: '',
@@ -69,48 +67,48 @@ export default function MessageForm() {
   };
 
   return (
-    <div className={styles.container}>
+    <div className='flex flex-col w-full max-w-[384px] md:max-w-none md:w-auto gap-6 max-sm:gap-6'>
       <div>
-        <p className={styles.label}>Send me a message</p>
+        <p className='font-bold text-2xl md:text-4xl m-0 max-sm:text-3xl'>Send me a message</p>
       </div>
-      <form onSubmit={handleSubmit} className={styles.formContainer}>
-        <div className={styles.inputContainer}>
-          <p className={styles.inputLabel}>Name: </p>
+      <form onSubmit={handleSubmit} className='flex flex-col gap-6'>
+        <div className='flex flex-col gap-2'>
+          <p className='m-0 font-normal'>Name: </p>
           <input
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className={styles.nameInput}
+            className='rounded px-1.5 text-base font-light border border-0.5 h-6 pl-1.5'
           />
-          <p className={styles.inputLabel}>Email: </p>
+          <p className='m-0 font-normal'>Email: </p>
           <input
             type="text"
             name="email"
             value={formData.email}
             onChange={handleChange}
             placeholder="Optional"
-            className={styles.nameInput}
+            className='rounded px-1.5 text-base font-light border border-0.5 h-6 pl-1.5'
           />
         </div>
-        <div className={styles.inputContainer}>
-          <p className={styles.inputLabel}>Message: </p>
+        <div className='flex flex-col gap-2'>
+          <p className='m-0 font-normal'>Message: </p>
           <textarea
             name="message"
             value={formData.message}
             onChange={handleChange}
-            className={styles.messageInput}
+            className='rounded px-1.5 text-base font-light border border-0.5 h-24 pl-1.5'
           />
         </div>
         {(status || isLoading) && (
           <p
-            className={status.styles === 'basic' ? styles.basic : styles.error}>
+            className={status.styles === 'basic' ? 'm-0 font-light text-sm text-[#6b6b6b]' : 'm-0 font-light text-sm text-red-600'}>
             {isLoading ? `Loading...` : status.message}
           </p>
         )}
         <motion.button
           type="submit"
-          className={styles.submitButton}
+          className='font-bold text-sm py-2.5 border-none rounded-full bg-black text-white text-center disabled:opacity-50'
           disabled={isLoading}
           whileHover={{
             scale: 1.06,
@@ -129,7 +127,7 @@ export default function MessageForm() {
               damping: 20,
             },
           }}>
-          <p className={styles.submitText}>Submit</p>
+          <p className='m-0'>Submit</p>
         </motion.button>
       </form>
     </div>

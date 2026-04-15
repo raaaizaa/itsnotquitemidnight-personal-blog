@@ -43,7 +43,7 @@ export async function getHeadline() {
           return null;
         }
 
-        const response = await fetch(indexMd.raw_url);
+        const response = await fetch(indexMd.raw_url, {cache: 'no-store'});
         const textContent = await response.text();
 
         if (!textContent.trim()) {

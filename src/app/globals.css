@@ -2,22 +2,22 @@
 
 @font-face {
   font-family: 'InterRegular';
-  src: url('../../public//fonts/Inter_24pt-Regular.ttf') format('opentype');
+  src: url('/fonts/Inter_24pt-Regular.ttf') format('opentype');
 }
 
 @font-face {
   font-family: 'InterBold';
-  src: url('../../public//fonts/Inter_24pt-Bold.ttf') format('opentype');
+  src: url('/fonts/Inter_24pt-Bold.ttf') format('opentype');
 }
 
 @font-face {
   font-family: 'InterLight';
-  src: url('../../public//fonts/Inter_24pt-Light.ttf') format('opentype');
+  src: url('/fonts/Inter_24pt-Light.ttf') format('opentype');
 }
 
 @font-face {
   font-family: 'HitMePunk';
-  src: url('../../public/fonts/hit-me-punk.ttf') format('opentype');
+  src: url('/fonts/hit-me-punk.ttf') format('opentype');
 }
 
 body {

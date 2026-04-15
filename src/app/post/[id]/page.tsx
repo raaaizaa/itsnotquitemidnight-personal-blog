@@ -5,8 +5,6 @@ import ImagePlaceholder from '../../../../public/meta-image-formatted.png';
 import PostDetailWrapper from '@/wrapper/PostDetailWrapper';
 import OtherPostsWrapper from '@/wrapper/OtherPostsWrapper';
 
-import styles from './page.module.css';
-
 export async function generateMetadata(): Promise<Metadata> {
   const id = await getPostId();
   const { postSEO } = await getPostDetail(id);
@@ -51,7 +49,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Post() {
   return (
-    <div className={styles.container}>
+    <div className='flex flex-col justify-start items-start m-auto max-w-2xl box-border mb-11 gap-20 max-md:max-w-lg max-sm:max-w-none max-sm:p-6 max-sm:mb-0'>
       <PostDetailWrapper />
       <OtherPostsWrapper />
     </div>

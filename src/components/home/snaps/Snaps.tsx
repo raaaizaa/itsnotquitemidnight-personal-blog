@@ -4,20 +4,18 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 
-import styles from './Snaps.module.css';
-
 export default function Snaps({ board }) {
   return (
-    <div className={styles.container}>
-      <p className={styles.title}>
+    <div className='flex flex-col gap-9'>
+      <p className='font-bold text-4xl m-0'>
         A board that consists of pics from his phone cam roll he thought looked
         cool 📱
       </p>
-      <p className={styles.subtitle}>
+      <p className='font-light text-base m-0 text-[#6b6b6b]'>
         See the complete board on{' '}
-        <span className={styles.pinterestRed}>Pinterest</span>{' '}
+        <span className='font-normal text-[#e60023]'>Pinterest</span>{' '}
         <a
-          className={styles.anchorSubtitle}
+          className='no-underline text-[#6b6b6b] transition-all transition-150 ease-in-out hover:underline hover:underline-offset-1 hover:text-black'
           href="https://www.pinterest.com/whatiamseeing/phone-cam-roll/"
           target="_blank">
           here
@@ -41,7 +39,7 @@ export default function Snaps({ board }) {
                     width={500}
                     height={500}
                     quality={30}
-                    className={styles.image}
+                    className='transition-filter transition-500 ease-in-out hover:brightness-[0.85] hover:scale-[101%]'
                     loading='lazy'
                   />
                 </motion.div>
@@ -51,7 +49,7 @@ export default function Snaps({ board }) {
                 return (
                   <div
                     key={index}
-                    className={styles.imageSkeleton}
+                    className='bg-[#c9c9c9] animate-pulse'
                     style={{ height: `${randomHeight}px` }}
                   />
                 );

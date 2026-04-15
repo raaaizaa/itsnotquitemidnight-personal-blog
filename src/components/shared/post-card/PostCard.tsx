@@ -5,7 +5,6 @@ import { formatDate } from '@/utils/date-utils';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-import styles from './PostCard.module.css';
 import Link from 'next/link';
 
 export default function PostCard({ post }: { post: PostProps }) {
@@ -16,7 +15,7 @@ export default function PostCard({ post }: { post: PostProps }) {
   return (
     <Link href={`/post/${id}`}>
       <motion.div
-        className={styles.wrapper}
+        className='flex flex-col no-underline px-3 hover:bg-[rgb(250,250,250)] hover:transition-colors hover:transition-100 hover:ease-in-out hover:cursor-pointer max-sm:p-0'
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{
           scale: 1,
@@ -34,12 +33,12 @@ export default function PostCard({ post }: { post: PostProps }) {
             duration: 0.2,
           },
         }}>
-        <div className={styles.divider} />
-        <div className={styles.contentContainer}>
-          <div className={styles.container}>
-            <div className={styles.textContainer}>
+        <div className='border-t border-[rgb(242,242,242)] border-0.5' />
+        <div className='flex flex-col py-7 justify-center w-inherit'>
+          <div className='flex items-center justify-between gap-3'>
+            <div className='flex flex-col text-black gap-3 w-full md:w-96'>
               <p
-                className={styles.label}
+                className='font-bold text-xl md:text-xl text-black m-0'
                 dangerouslySetInnerHTML={{
                   __html:
                     headline.length > 150
@@ -47,23 +46,23 @@ export default function PostCard({ post }: { post: PostProps }) {
                       : headline,
                 }}
               />
-              <div className={styles.textInfoContainer}>
+              <div className='flex flex-col gap-4'>
                 <div
-                  className={styles.description}
+                  className='font-light text-base md:text-base text-[#6b6b6b] m-0'
                   dangerouslySetInnerHTML={{ __html: cutted_description }}
                 />
-                <div className={styles.footer}>
-                  {tag && <p className={styles.tag}>{tag}</p>}
-                  <p className={styles.date}>{formatted_created_at}</p>
+                <div className='flex items-center gap-3'>
+                  {tag && <p className='text-sm md:text-sm bg-[#f2f2f2] rounded px-2 py-1 w-16 text-center m-0 md:w-16 max-sm:w-12 max-sm:text-xs'>{tag}</p>}
+                  <p className='m-0 text-sm md:text-sm max-sm:text-xs'>{formatted_created_at}</p>
                 </div>
               </div>
             </div>
             {first_image ? (
-              <div className={styles.imageContainer}>
+              <div className='w-40 h-28 max-md:w-32 max-md:h-20 max-sm:w-24 max-sm:h-16'>
                 <Image
                   src={first_image}
                   alt="img"
-                  className={styles.image}
+                  className='w-40 h-28 max-md:w-32 max-md:h-20 max-sm:w-24 max-sm:h-16 object-cover max-w-none'
                   quality={50}
                   width={500}
                   height={500}

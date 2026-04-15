@@ -1,14 +1,16 @@
 import Link from 'next/link';
 
-import styles from './NotFound.module.css';
-
-export default function NotFoundPage() {
+export default function NotFound() {
   return (
-    <div className={styles.container}>
-      <p className={styles.title}>Error 404: Page Not Found</p>
-      <div className={styles.buttonContainer}>
+    <div className='flex flex-col justify-center m-auto gap-5 h-[calc(100vh-67px)] w-full'>
+      <p className='m-0 text-4xl text-center font-bold max-sm:text-3xl'>
+        404 | Page Not Found
+      </p>
+      <div className='flex justify-center items-center'>
         <Link href="/">
-          <div className={styles.button}>Take me back to home</div>
+          <button className='font-normal text-base px-3 py-3 border-none rounded-xl bg-black text-white cursor-pointer w-80 text-center'>
+            Go back to home
+          </button>
         </Link>
       </div>
     </div>

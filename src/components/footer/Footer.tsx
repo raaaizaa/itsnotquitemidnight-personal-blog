@@ -1,19 +1,17 @@
 import Image from 'next/image';
 
-import styles from './Footer.module.css';
-
 export default function Footer() {
   return (
-    <div className={styles.container}>
-      <div className={styles.textContainer}>
-        <p className={styles.text}>
+    <div className='flex flex-col p-0 m-0 bg-black justify-center items-center'>
+      <div className='flex flex-col justify-center items-center p-16 gap-5'>
+        <p className='font-light text-white text-sm text-center'>
           ©itsnotquitemidnight {new Date().getFullYear()}
         </p>
         <a
           href="https://github.com/raaaizaa/raizatriestocode-2025"
-          target="_blank">
+          target="_blank"
+          className='transition-all transition-100 ease-in-out hover:drop-shadow-[0_0_6px_rgba(255,255,255,0.7)]'>
           <Image
-            className={styles.githubIcon}
             src="../github-mark-white.svg"
             width={24}
             height={24}

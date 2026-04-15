@@ -4,19 +4,17 @@ import { useNowPlayingStore } from '@/services/getNowPlaying';
 import LoadingSpotifyCard from './LoadingSpotifyCard';
 import SpotifyCard from './SpotifyCard';
 
-import styles from './NowPlaying.module.css';
-
 export default function NowPlaying() {
   const { nowPlaying, lastPlayed } = useNowPlayingStore();
   const data = nowPlaying || lastPlayed;
 
   if (!data) {
     return (
-      <div className={styles.container}>
-        <p className={styles.title}>
+      <div className='flex flex-col gap-6 w-full max-w-sm md:max-w-none md:w-auto'>
+        <p className='font-bold text-2xl sm:text-3xl md:text-4xl m-0'>
           Now playing on{' '}
           <a
-            className={styles.spotifyColor}
+            className='text-[#1db954] no-underline hover:underline hover:decoration-[3px]'
             href="https://open.spotify.com/user/raaaizaa">
             Spotify
           </a>
@@ -27,16 +25,15 @@ export default function NowPlaying() {
   }
 
   return (
-    <div className={styles.container}>
-      <p className={styles.title}>
+    <div className='flex flex-col gap-6 w-full max-w-sm md:max-w-none md:w-auto'>
+      <p className='font-bold text-2xl sm:text-3xl md:text-4xl m-0'>
         {data?.playedAt ? 'Last played on ' : 'Now playing on '}
         <a
-          className={styles.spotifyColor}
+          className='text-[#1db954] no-underline hover:underline hover:decoration-[3px]'
           href="https://open.spotify.com/user/raaaizaa">
           Spotify
         </a>
       </p>
-
       <SpotifyCard {...data} />
     </div>
   );

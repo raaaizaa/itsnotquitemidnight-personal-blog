@@ -1,15 +1,10 @@
 import NowPlaying from '../now-playing/NowPlaying';
 import MessageForm from '../message-form/MessageForm';
 
-import styles from './Sidebar.module.css';
-
 export default function Sidebar() {
   return (
-    <div className={styles.divider}>
-      <div className={styles.aboutContainer}>
-        <NowPlaying />
-      </div>
-      <div className={styles.messageDivider} />
+    <div className='flex flex-col w-full md:max-w-[400px] p-8 gap-8 max-w-full md:border-l-[1px] md:border-[rgb(242,242,242)]'>
+      <NowPlaying />
       <MessageForm />
     </div>
   );

@@ -7,8 +7,6 @@ import PostCard from '@/components/shared/post-card/PostCard';
 import LoadingPostCard from '@/components/shared/post-card/LoadingPostCard';
 import { motion } from 'framer-motion';
 
-import styles from './BlogPosts.module.css';
-
 const POSTS_PER_PAGE = 8;
 
 export default function BlogPosts({ data }: { data: PostProps[] | undefined }) {
@@ -41,9 +39,9 @@ export default function BlogPosts({ data }: { data: PostProps[] | undefined }) {
   };
 
   return (
-    <div className={styles.container}>
+    <div className='flex flex-col gap-9 md:gap-8 sm:gap-7'>
       {/* Tag Filter */}
-      <div className={styles.tagContainer}>
+      <div className='flex flex-wrap gap-2 md:gap-3'>
         <motion.button
           whileHover={{
             scale: 1.2,
@@ -62,7 +60,7 @@ export default function BlogPosts({ data }: { data: PostProps[] | undefined }) {
             },
           }}
           onClick={() => handleTagClick(null)}
-          className={selectedTag ? styles.tag : styles.activeTag}>
+          className={selectedTag ? 'text-sm bg-[#f2f2f2] rounded px-2 py-1 w-fit text-center cursor-pointer' : 'text-sm bg-black text-white rounded px-2 py-1 w-fit text-center cursor-pointer'}>
           All
         </motion.button>
         {tags.map((tag) => (
@@ -85,7 +83,7 @@ export default function BlogPosts({ data }: { data: PostProps[] | undefined }) {
             }}
             key={tag}
             onClick={() => handleTagClick(tag)}
-            className={selectedTag !== tag ? styles.tag : styles.activeTag}>
+            className={selectedTag !== tag ? 'text-sm bg-[#f2f2f2] rounded px-2 py-1 w-fit text-center cursor-pointer' : 'text-sm bg-black text-white rounded px-2 py-1 w-fit text-center cursor-pointer'}>
             {tag}
           </motion.button>
         ))}
@@ -93,14 +91,14 @@ export default function BlogPosts({ data }: { data: PostProps[] | undefined }) {
 
       {/* Posts */}
       {!data ? (
-        <div className={styles.dataContainer}>
+        <div className='min-h-[1400px]'>
           {Array.from({ length: POSTS_PER_PAGE }).map((_, index) => (
             <LoadingPostCard key={index} />
           ))}
         </div>
       ) : (
         <>
-          <div className={styles.dataContainer}>
+          <div className='min-h-[1400px]'>
             {displayedPosts?.map((post, index) => (
               <PostCard post={post} key={`${post.id}-${index}`} />
             ))}
