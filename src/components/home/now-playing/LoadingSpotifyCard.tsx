@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function LoadingSpotifyCard() {
   return (
-    <div className='flex flex-col gap-2'>
+    <div className="flex flex-col gap-2">
       {/* thanks claude for migrating this to tailwind */}
       <style>{`
         .skeleton-pulse {
@@ -16,10 +16,10 @@ export default function LoadingSpotifyCard() {
           100% { background-position: 200px 0; }
         }
       `}</style>
-      <div className='skeleton-pulse w-full md:w-64 md:h-64 h-64 bg-[#c9c9c9]' />
-      <div className='flex flex-col gap-4'>
-        <div className='skeleton-pulse h-7 w-60 m-0' />
-        <div className='skeleton-pulse h-5 w-48 m-0' />
+      <div className="skeleton-pulse w-full aspect-square object-cover h-full bg-[#c9c9c9]" />
+      <div className="flex flex-col gap-4">
+        <div className="skeleton-pulse h-7 w-60 m-0" />
+        <div className="skeleton-pulse h-5 w-48 m-0" />
       </div>
     </div>
   );

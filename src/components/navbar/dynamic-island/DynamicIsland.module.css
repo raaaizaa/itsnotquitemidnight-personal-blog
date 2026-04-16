@@ -186,9 +186,10 @@
   }
 }
 
-@media (max-width: 360px){
-  .container{
-    display: none;
+@media (max-width: 350px) {
+  .container {
+    /* display: none; */
+    width: fit-content !important;
   }
 }
 

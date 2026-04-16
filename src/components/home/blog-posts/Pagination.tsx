@@ -22,7 +22,7 @@ export default function Pagination({
   };
 
   return (
-    <div className='flex justify-center gap-2 mt-4'>
+    <div className="flex justify-center gap-2 mt-4">
       <motion.button
         onClick={handlePrev}
         disabled={currentPage === 1}
@@ -33,7 +33,7 @@ export default function Pagination({
           opacity: 1,
           transition: { type: 'spring', stiffness: 300, damping: 20 },
         }}
-        className='px-3 py-2 border-none bg-[#f0f0f0] cursor-pointer rounded-lg disabled:bg-[#dcdcdc] disabled:cursor-not-allowed'>
+        className="px-3 py-2 border-none bg-[#f0f0f0] cursor-pointer rounded-lg disabled:bg-[#dcdcdc] disabled:cursor-not-allowed">
         {`<`}
       </motion.button>
 
@@ -41,7 +41,11 @@ export default function Pagination({
         <motion.button
           key={page}
           onClick={() => handlePageChange(page)}
-          className={currentPage === page ? 'px-3 py-2 border-none bg-black text-white font-bold rounded-lg cursor-pointer' : 'px-3 py-2 border-none bg-[#f0f0f0] cursor-pointer rounded-lg'}
+          className={
+            currentPage === page
+              ? 'px-3 py-2 border-none bg-black text-white font-inter-bold rounded-lg cursor-pointer'
+              : 'px-3 py-2 border-none bg-[#f0f0f0] cursor-pointer rounded-lg'
+          }
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
           initial={{ scale: 0.8, opacity: 0 }}
@@ -64,7 +68,7 @@ export default function Pagination({
           opacity: 1,
           transition: { type: 'spring', stiffness: 300, damping: 20 },
         }}
-        className='px-3 py-2 border-none bg-[#f0f0f0] cursor-pointer rounded-lg disabled:bg-[#dcdcdc] disabled:cursor-not-allowed'>
+        className="px-3 py-2 border-none bg-[#f0f0f0] cursor-pointer rounded-lg disabled:bg-[#dcdcdc] disabled:cursor-not-allowed">
         {`>`}
       </motion.button>
     </div>

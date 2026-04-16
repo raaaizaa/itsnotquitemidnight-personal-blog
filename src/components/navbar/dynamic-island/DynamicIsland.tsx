@@ -8,6 +8,7 @@ import Soundwave from './soundwave/Soundwave';
 import { SpotifyIcon } from './assets/SpotifyIcon';
 
 import styles from './DynamicIsland.module.css';
+import { substring } from '@/utils/substring';
 
 export default function DynamicIsland() {
   const { nowPlaying, lastPlayed, fetchNowPlaying } = useNowPlayingStore();
@@ -116,22 +117,22 @@ export default function DynamicIsland() {
                   <SpotifyIcon width={16} height={16} fill="#1DB954" />
                   <p className={styles.expandedTitle}>
                     {dataType.title}{' '}
-                    <a href='https://open.spotify.com/user/raaaizaa' target='_blank' className={styles.spotifyText}>Raiza`s Spotify</a>
+                    <a
+                      href="https://open.spotify.com/user/raaaizaa"
+                      target="_blank"
+                      className={styles.spotifyText}>
+                      Raiza`s Spotify
+                    </a>
                   </p>
                 </div>
                 <a
                   className={styles.expandedTrackName}
                   href={trackUrl}
                   target="_blank">
-                  {trackName.length > 20
-                    ? `${trackName.substring(0, 20)}...`
-                    : trackName}
+                  {substring(trackName, 20)}
                 </a>
                 <p className={styles.expandedArtistName}>
-                  {' '}
-                  {artistName.length > 20
-                    ? `${artistName.substring(0, 20)}...`
-                    : artistName}
+                  {substring(artistName, 20)}
                 </p>
               </div>
             </div>
@@ -181,11 +182,7 @@ export default function DynamicIsland() {
               <Soundwave isPlaying={dataType.soundwave} />
             </div>
             {window.innerWidth > 600 && isHovered && (
-              <p className={styles.trackText}>
-                {trackName.length > 14
-                  ? `${data.trackName.substring(0, 14)}...`
-                  : data.trackName}
-              </p>
+              <p className={styles.trackText}>{substring(trackName, 14)}</p>
             )}
           </div>
         </motion.button>

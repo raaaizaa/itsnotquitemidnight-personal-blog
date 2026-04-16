@@ -20,6 +20,13 @@
   src: url('/fonts/hit-me-punk.ttf') format('opentype');
 }
 
+@theme {
+  --font-inter: 'InterRegular', system-ui, sans-serif;
+  --font-inter-bold: 'InterBold', system-ui, sans-serif;
+  --font-inter-light: 'InterLight', system-ui, sans-serif;
+  --font-hit-me-punk: 'HitMePunk', system-ui, sans-serif;
+}
+
 body {
   font-family: 'InterRegular';
   margin: auto;
