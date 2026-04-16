@@ -1,13 +1,14 @@
 'use client';
 
+import Clarity from '@microsoft/clarity';
 import Image from 'next/image';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
-import { PostDetailProps } from '@/types/post';
 import { motion } from 'framer-motion';
 import PacmanLoading from '@/components/shared/loading/PacmanLoading';
 import portrait from '../../../../public/github-portrait.jpg';
+import { PostDetailProps } from '@/types/post';
 
 import styles from './PostDetail.module.css';
 
@@ -19,6 +20,8 @@ export default function PostDetail({ post }: { post: PostDetailProps | null }) {
       </div>
     );
   }
+
+  Clarity.init(process.env.NEXT_PUBLIC_MICROSOFT_CLARITY!);
 
   const { content, created_at, tag } = post;
 

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@microsoft/clarity": "^1.0.2",
     "@vercel/og": "^0.6.8",
     "framer-motion": "^12.7.4",
     "next": "15.2.8",
