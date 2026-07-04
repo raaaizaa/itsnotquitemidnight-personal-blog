@@ -15,13 +15,13 @@ export default function BlogPosts({ data }: { data: PostProps[] | undefined }) {
   const tags = Array.from(
     new Set(
       data
-        ?.map((post) => post.tag)
+        ?.map((post) => post.content.tag)
         .filter((tag): tag is string => tag !== undefined)
     )
   );
 
   const filteredPosts = selectedTag
-    ? data?.filter((post) => post.tag === selectedTag)
+    ? data?.filter((post) => post.content.tag === selectedTag)
     : data;
 
   const totalPages = Math.ceil((filteredPosts?.length || 0) / POSTS_PER_PAGE);
@@ -39,9 +39,9 @@ export default function BlogPosts({ data }: { data: PostProps[] | undefined }) {
   };
 
   return (
-    <div className='flex flex-col gap-9 md:gap-8 sm:gap-7'>
+    <div className="flex flex-col gap-9 md:gap-8 sm:gap-7">
       {/* Tag Filter */}
-      <div className='flex flex-wrap gap-2 md:gap-3'>
+      <div className="flex flex-wrap gap-2 md:gap-3">
         <motion.button
           whileHover={{
             scale: 1.2,
@@ -60,7 +60,11 @@ export default function BlogPosts({ data }: { data: PostProps[] | undefined }) {
             },
           }}
           onClick={() => handleTagClick(null)}
-          className={selectedTag ? 'text-sm bg-[#f2f2f2] rounded px-2 py-1 w-fit text-center cursor-pointer' : 'text-sm bg-black text-white rounded px-2 py-1 w-fit text-center cursor-pointer'}>
+          className={
+            selectedTag
+              ? 'text-sm bg-[#f2f2f2] rounded px-2 py-1 w-fit text-center cursor-pointer'
+              : 'text-sm bg-black text-white rounded px-2 py-1 w-fit text-center cursor-pointer'
+          }>
           All
         </motion.button>
         {tags.map((tag) => (
@@ -83,7 +87,11 @@ export default function BlogPosts({ data }: { data: PostProps[] | undefined }) {
             }}
             key={tag}
             onClick={() => handleTagClick(tag)}
-            className={selectedTag !== tag ? 'text-sm bg-[#f2f2f2] rounded px-2 py-1 w-fit text-center cursor-pointer' : 'text-sm bg-black text-white rounded px-2 py-1 w-fit text-center cursor-pointer'}>
+            className={
+              selectedTag !== tag
+                ? 'text-sm bg-[#f2f2f2] rounded px-2 py-1 w-fit text-center cursor-pointer'
+                : 'text-sm bg-black text-white rounded px-2 py-1 w-fit text-center cursor-pointer'
+            }>
             {tag}
           </motion.button>
         ))}
@@ -91,14 +99,14 @@ export default function BlogPosts({ data }: { data: PostProps[] | undefined }) {
 
       {/* Posts */}
       {!data ? (
-        <div className='min-h-[1400px]'>
+        <div className="min-h-[1400px]">
           {Array.from({ length: POSTS_PER_PAGE }).map((_, index) => (
             <LoadingPostCard key={index} />
           ))}
         </div>
       ) : (
         <>
-          <div className='min-h-[1400px]'>
+          <div className="min-h-[1400px]">
             {displayedPosts?.map((post, index) => (
               <PostCard post={post} key={`${post.id}-${index}`} />
             ))}

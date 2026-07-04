@@ -3,9 +3,10 @@
 import BlogPosts from '../blog-posts/BlogPosts';
 
 export default function Content({ posts }) {
+  if (!posts) return null;
 
   return (
-    <div className='flex flex-col gap-9 p-9 w-full max-sm:p-6 max-sm:box-border max-sm:w-full'>
+    <div className="flex flex-col gap-9 p-9 w-full max-sm:p-6 max-sm:box-border max-sm:w-full">
       <BlogPosts data={posts} />
     </div>
   );

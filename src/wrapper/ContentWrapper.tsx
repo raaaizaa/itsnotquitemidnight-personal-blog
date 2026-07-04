@@ -1,6 +1,6 @@
 'use client';
 
-import { getHeadline } from '@/services/getPost';
+import { getPosts } from '@/services/posts';
 import Content from '@/components/home/content/Content';
 import { useEffect, useState } from 'react';
 import { PostProps } from '@/types/post';
@@ -10,11 +10,11 @@ export default function ContentWrapper() {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const posts = await getHeadline();
+      const posts = await getPosts();
       setPosts(posts);
     };
     fetchPosts();
   }, []);
 
-  return <Content posts={posts}/>;
+  return <Content posts={posts} />;
 }

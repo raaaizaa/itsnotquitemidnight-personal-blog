@@ -1,11 +1,14 @@
 export interface PostProps {
   id: string;
   url: string;
-  tag?: string;
-  cutted_description: string;
-  first_image: string;
-  headline: string;
-  created_at: string;
+  slug: string;
+  content: {
+    headline: string;
+    tag: string;
+    cutted_description: string;
+    created_at: string;
+    first_image: string;
+  };
 }
 
 export interface PostDetailProps {
@@ -14,9 +17,9 @@ export interface PostDetailProps {
   created_at?: string;
 }
 
-export interface PostSEOProps{
-  headline: string,
-  image: string,
-  description: string,
-  url: string,
+export interface PostSEOProps {
+  headline: string;
+  image: string;
+  description: string;
+  url: string;
 }

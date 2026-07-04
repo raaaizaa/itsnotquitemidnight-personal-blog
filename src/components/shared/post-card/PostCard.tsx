@@ -9,12 +9,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function PostCard({ post }: { post: PostProps }) {
-  const { headline, first_image, created_at, id, cutted_description, tag } =
-    post;
+  const { content, url } = post;
+  const { headline, tag, cutted_description, created_at, first_image } =
+    content;
   const formatted_created_at = formatDate(created_at);
 
   return (
-    <Link href={`/post/${id}`}>
+    <Link href={url}>
       <motion.div
         className="flex flex-col no-underline px-3 hover:bg-[rgb(250,250,250)] hover:transition-colors hover:transition-100 hover:ease-in-out hover:cursor-pointer max-sm:p-0"
         initial={{ scale: 0.8, opacity: 0 }}
