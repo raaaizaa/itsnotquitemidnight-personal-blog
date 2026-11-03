@@ -1,15 +1,15 @@
-import Sidebar from './sidebar/Sidebar';
-import Content from './content/Content';
 import { getPosts } from '@/services/posts';
 import ClarityProvider from '../shared/clarity/ClarityProvider';
+import Landing from './landing/Landing';
+import { PostProps } from '@/types/post';
 
 export default async function Home() {
   const posts = await getPosts();
+  const recentPosts: PostProps[] = posts.slice(0, 3)
 
   return (
-    <div className="w-full font-inter max-w-[640px] md:max-w-[900px] lg:max-w-[1100px] mx-auto flex flex-col md:flex-row px-4">
-      <Content posts={posts} />
-      <Sidebar />
+    <div className="bg-[#1a1a1a]">
+      <Landing posts={recentPosts}/>
       <ClarityProvider />
     </div>
   );

@@ -20,11 +20,17 @@
   src: url('/fonts/hit-me-punk.ttf') format('opentype');
 }
 
+@font-face {
+  font-family: 'RoadRage';
+  src: url('/fonts/RoadRage-Regular.ttf') format('opentype')
+}
+
 @theme {
   --font-inter: 'InterRegular', system-ui, sans-serif;
   --font-inter-bold: 'InterBold', system-ui, sans-serif;
   --font-inter-light: 'InterLight', system-ui, sans-serif;
   --font-hit-me-punk: 'HitMePunk', system-ui, sans-serif;
+  --font-road-rage: 'RoadRage', system-ui, sans-serif;
 }
 
 body {
