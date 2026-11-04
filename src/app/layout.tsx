@@ -1,6 +1,4 @@
 import type { Metadata } from 'next';
-import Navbar from '@/components/navbar/Navbar';
-import Footer from '@/components/footer/Footer';
 
 import ImagePlaceholder from '../../public/meta-image-formatted.png';
 
@@ -14,7 +12,7 @@ export const metadata: Metadata = {
     title: `It's not quite midnight`,
     description: 'A personal blog that consists of his thoughts over time',
     images: ImagePlaceholder.src,
-    url: 'itsnotquitemidnight.xyz',
+    url: 'itsnotquitemidnight.com',
   },
   twitter: {
     card: 'summary',
@@ -34,11 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">
-        {/* <Navbar /> */}
-        {children}
-        {/* <Footer /> */}
-      </body>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }

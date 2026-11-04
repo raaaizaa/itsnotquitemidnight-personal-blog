@@ -29,4 +29,14 @@ export const SOCIAL_LIST = [
     url: 'https://substack.com/@itsnotquitemidnight',
     icon: '/substack.svg',
   },
+  {
+    name: 'Spotify',
+    url: 'https://open.spotify.com/raaaizaa',
+    icon: '/spotify.svg',
+  },
+    {
+    name: 'Instagram',
+    url: 'https://www.instagram.com/raaizar/',
+    icon: '/instagram.svg',
+  },
 ];

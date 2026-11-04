@@ -39,3 +39,97 @@ body {
   user-select: none;
   line-height: normal;
 }
+
+@keyframes stutter {
+  0% {
+    transform: rotate(-3deg) translate(0, 0);
+  }
+  15% {
+    transform: rotate(2deg) translate(1px, -1px);
+  }
+  30% {
+    transform: rotate(-5deg) translate(-1px, 1px);
+  }
+  45% {
+    transform: rotate(3deg) translate(1px, 0);
+  }
+  60% {
+    transform: rotate(-2deg) translate(-1px, -1px);
+  }
+  75% {
+    transform: rotate(5deg) translate(0, 1px);
+  }
+  90% {
+    transform: rotate(-3deg) translate(1px, 0);
+  }
+  100% {
+    transform: rotate(-3deg) translate(0, 0);
+  }
+}
+
+@keyframes text-stutter{
+  0% {
+    transform: rotate(-1deg) translate(0, 0);
+  }
+  15% {
+    transform: rotate(-1.5deg) translate(1px, -1px);
+  }
+  30% {
+    transform: rotate(-2deg) translate(-1px, 1px);
+  }
+  45% {
+    transform: rotate(-1.5deg) translate(1px, 0);
+  }
+  60% {
+    transform: rotate(-1deg) translate(-1px, -1px);
+  }
+  75% {
+    transform: rotate(0deg) translate(0, 1px);
+  }
+  90% {
+    transform: rotate(0.5deg) translate(1px, 0);
+  }
+  100% {
+    transform: rotate(1deg) translate(0, 0);
+  }
+}
+
+
+@keyframes text-stutter-2{
+  0% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+  15% {
+    transform: rotate(-1deg) translate(1px, -1px);
+  }
+  30% {
+    transform: rotate(-2deg) translate(-1px, 1px);
+  }
+  45% {
+    transform: rotate(-1.5deg) translate(1px, 0);
+  }
+  60% {
+    transform: rotate(-1deg) translate(-1px, -1px);
+  }
+  75% {
+    transform: rotate(0deg) translate(0, 1px);
+  }
+  90% {
+    transform: rotate(1deg) translate(1px, 0);
+  }
+  100% {
+    transform: rotate(1.5deg) translate(0, 0);
+  }
+}
+
+.animate-stutter {
+  animation: stutter 2.8s steps(1, end) infinite;
+}
+
+.posterize-text{
+  animation: text-stutter 3s steps(1, end) infinite;
+}
+
+.posterize-text-2{
+  animation: text-stutter-2 3s steps(1, end) infinite;
+}

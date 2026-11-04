@@ -55,7 +55,6 @@ export default async function Post() {
   return (
     <div className="flex flex-col justify-start items-start m-auto max-w-2xl box-border mb-11 gap-20 max-md:max-w-lg max-sm:max-w-none max-sm:p-6 max-sm:mb-0">
       <PostDetail post={post_detail} />
-      <OtherPostsWrapper />
     </div>
   );
 }
