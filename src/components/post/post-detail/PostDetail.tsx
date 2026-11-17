@@ -1,11 +1,13 @@
 'use client';
 import ClarityProvider from '@/components/shared/clarity/ClarityProvider';
-import { PostDetailProps } from '@/types/post';
+import type { PostDetailProps } from '@/types/post';
 import TextRenderer from '../text-renderer/TextRenderer';
+import NotFound from '@/app/not-found';
 
 export default function PostDetail({ post }: { post: PostDetailProps | null }) {
   const { content, created_at, tag } = post || {};
 
+  if (!content) return <NotFound />;
   return (
     <div className=" text-white max-w-[560px] w-full">
       {tag && (

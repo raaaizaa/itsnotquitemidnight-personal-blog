@@ -1,15 +1,8 @@
+import type { PostNode } from '@/types/post';
 import React from 'react';
 
-type TextNode = {
-  type: string;
-  text?: string;
-  level?: number;
-  url?: string;
-  children?: TextNode[];
-};
-
 type TextRendererProps = {
-  node: TextNode;
+  node: PostNode;
   index?: number;
 };
 
@@ -18,9 +11,11 @@ export default function TextRenderer({ node, index }: TextRendererProps) {
     return <>{node.text}</>;
   }
 
-  const children = node.children?.map((child, childIndex) => (
-    <TextRenderer key={childIndex} node={child} index={childIndex} />
-  ));
+  const children = 'children' in node
+    ? node.children.map((child, childIndex) => (
+        <TextRenderer key={childIndex} node={child} index={childIndex} />
+      ))
+    : null;
 
   switch (node.type) {
     case 'heading':
