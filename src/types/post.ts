@@ -12,7 +12,7 @@ export interface PostProps {
 }
 
 export interface PostDetailProps {
-  content?: string;
+  content?: any;
   tag?: string;
   created_at?: string;
 }

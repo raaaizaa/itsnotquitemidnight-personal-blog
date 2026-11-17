@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { getPostDetail } from '@/services/posts';
 import { getBaseUrl, getPostId } from '@/utils/url-utils';
 import ImagePlaceholder from '../../../../public/meta-image-formatted.png';
-import OtherPostsWrapper from '@/wrapper/OtherPostsWrapper';
 import PostDetail from '@/components/post/post-detail/PostDetail';
+import OtherPostsWrapper from '@/wrapper/OtherPostsWrapper';
 
 export async function generateMetadata(): Promise<Metadata> {
   const id = await getPostId();
@@ -53,8 +53,20 @@ export default async function Post() {
   const { post_detail } = await getPostDetail(id);
 
   return (
-    <div className="flex flex-col justify-start items-start m-auto max-w-2xl box-border mb-11 gap-20 max-md:max-w-lg max-sm:max-w-none max-sm:p-6 max-sm:mb-0">
-      <PostDetail post={post_detail} />
+    <div className="bg-[#1a1a1a] flex justify-center mb-8">
+      <div>
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+        <a
+          href="/"
+          className="font-hit-me-punk w-full text-[48px] md:text-[60px] lg:text-[72px] flex justify-center py-8 text-[#a83dc5] hover:scale-110">
+          itsnotquitemidnight
+        </a>
+        <div className="px-8">
+          <PostDetail post={post_detail} />
+          <hr className="my-4 border-white" />
+          <OtherPostsWrapper />
+        </div>
+      </div>
     </div>
   );
 }

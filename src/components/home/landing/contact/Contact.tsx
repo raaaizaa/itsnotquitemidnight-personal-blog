@@ -9,7 +9,7 @@ export default function Contact({ ref, onPrevious }) {
       ref={ref}
       className="relative flex flex-col h-dvh shrink-0 w-full snap-start items-center justify-center mx-6 md:mx-0 gap-6">
       <p className="font-road-rage text-[#a83dc5] text-[72px] text-center lg:text-[106px] posterize-text leading-14">
-        Connect to my social media
+        Other social media
       </p>
       <div className="grid grid-cols-4 items-center justify-center gap-4 posterize-text-2">
         {SOCIAL_LIST.map((social, key) => (

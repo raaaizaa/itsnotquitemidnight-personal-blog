@@ -60,7 +60,7 @@ export default async function Home() {
     <div className="bg-[#1a1a1a]">
       <Landing posts={posts} />
       <ClarityProvider />
-            <script
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(getSchema()).replace(/</g, '\\u003c'),

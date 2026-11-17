@@ -1,35 +1,31 @@
 'use client';
-
-import Image from 'next/image';
-import ReactMarkdown from 'react-markdown';
-import rehypeRaw from 'rehype-raw';
 import ClarityProvider from '@/components/shared/clarity/ClarityProvider';
 import { PostDetailProps } from '@/types/post';
-
-import styles from './PostDetail.module.css';
+import TextRenderer from '../text-renderer/TextRenderer';
 
 export default function PostDetail({ post }: { post: PostDetailProps | null }) {
   const { content, created_at, tag } = post || {};
 
   return (
-    <div className="bg-[#1a1a1a] text-white">
-      <ReactMarkdown
-        rehypePlugins={[rehypeRaw]}
-        components={{
-          img: ({ src = '', alt = '' }) => (
-            <Image
-              priority
-              src={src}
-              alt={alt}
-              width={800}
-              height={500}
-              quality={30}
-              layout="responsive"
-            />
-          ),
-        }}>
-        {content}
-      </ReactMarkdown>
+    <div className=" text-white max-w-[560px] w-full">
+      {tag && (
+        <p className="text-[#868686] border-[1px] w-fit px-1 py-0.5 text-[11px] md:text-[12px] rounded-[6px]">
+          {tag}
+        </p>
+      )}
+      {created_at && (
+        <p className='mt-2'>
+          Posted on {''}
+          {new Date(created_at).toLocaleDateString('en-US', {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric',
+          })}
+        </p>
+      )}
+      {content.map((item, index) => (
+        <TextRenderer node={item} key={index} index={index} />
+      ))}
       <ClarityProvider />
     </div>
   );
