@@ -25,13 +25,13 @@ export default function AllPosts({ items }: { items: PostProps[] }) {
     <div className="mx-6">
       <div className="flex flex-col lg:flex-row gap-4">
         <div className="flex flex-col items-center justify-center gap-4">
-          <h2 className="font-hit-me-punk text-[#a83dc5] md:text-[72px] lg:text-[92px] text-[52px] posterize-text">
-            all posts
+          <h2 className="font-special-elite text-[#A65A50] md:text-[72px] lg:text-[92px] text-[36px] posterize-text">
+            Posts
           </h2>
           <div className="flex gap-2 justify-start w-full px-3 md:px-0">
             {tags.map((item, index) => (
               <button
-                className="text-[#868686] hover:bg-[#868686] hover:border-[#868686] border-[1px] w-fit px-1 py-0.5 text-[11px] md:text-[12px] rounded-[6px] hover:text-white hover:scale-110 active:scale-125 hover:cursor-pointer hover:rotate-4"
+                className="text-[#847A70] hover:bg-[#847A70] active:bg-[#847A70] border-[1px] border-[#847A70] w-fit px-1 py-0.5 text-[11px] md:text-[12px] rounded-[6px] hover:text-[#E5DDD2] hover:scale-110 active:scale-125 hover:cursor-pointer hover:rotate-4 active:rotate-4 active:text-white"
                 key={`${item}-${index}`}
                 onClick={() => handleTagClick(item === 'All' ? null : item)}>
                 {item}
@@ -39,7 +39,7 @@ export default function AllPosts({ items }: { items: PostProps[] }) {
             ))}
           </div>
         </div>
-        <div className="flex flex-col divide-y overflow-y-scroll h-[400px] [&::-webkit-scrollbar]:hidden px-3">
+        <div className="flex flex-col divide-y overflow-y-scroll h-[clamp(200px,45vh,600px)] [&::-webkit-scrollbar]:hidden px-3">
           {filteredPosts.map((item: PostProps, index: number) => (
             <PostCard item={item} key={`${index}-${item.id}`} />
           ))}

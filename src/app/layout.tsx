@@ -32,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased bg-[#1a1a1a]">{children}</body>
+      <body className="antialiased bg-[#201E1D] film-grain">{children}</body>
     </html>
   );
 }

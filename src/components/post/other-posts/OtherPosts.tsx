@@ -8,8 +8,8 @@ export default function OtherPosts({ posts }: { posts: PostProps[] }) {
 
   return (
     <div className="flex flex-col w-full gap-6 max-sm:gap-6">
-      <p className="font-hit-me-punk text-[#a83dc5] text-[44px] md:text-[48px] lg:text-[56px]">
-        See other Posts here
+      <p className="font-special-elite text-[#A65A50] text-[36px] md:text-[40px] lg:text-[44px]">
+        Browse other posts...
       </p>
       {displayedPosts.map((item, index) => (
         <PostCard item={item} key={index}/>

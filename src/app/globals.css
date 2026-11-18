@@ -25,12 +25,18 @@
   src: url('/fonts/RoadRage-Regular.ttf') format('opentype')
 }
 
+@font-face {
+  font-family: 'SpecialElite';
+  src: url('/fonts/SpecialElite-Regular.ttf') format('opentype');
+}
+
 @theme {
   --font-inter: 'InterRegular', system-ui, sans-serif;
   --font-inter-bold: 'InterBold', system-ui, sans-serif;
   --font-inter-light: 'InterLight', system-ui, sans-serif;
   --font-hit-me-punk: 'HitMePunk', system-ui, sans-serif;
   --font-road-rage: 'RoadRage', system-ui, sans-serif;
+  --font-special-elite: 'SpecialElite', 'system-ui', sans-serif;
 }
 
 body {
@@ -132,4 +138,21 @@ body {
 
 .posterize-text-2{
   animation: text-stutter-2 3s steps(1, end) infinite;
+}
+
+/* globals.css */
+
+.film-grain {
+  position: relative;
+  isolation: isolate;
+}
+
+.film-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.245;
+  background-image: url("/grunge.jpg");
 }

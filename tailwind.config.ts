@@ -13,7 +13,8 @@ const config: Config = {
         'inter-light': ['InterLight', 'system-ui', 'sans-serif'],
         'inter-bold': ['InterBold', 'system-ui', 'sans-serif'],
         'hit-me-punk': ['HitMePunk', 'system-ui', 'sans-serif'],
-        'road-rage': ['RoadRage', 'system-ui', 'sans-serif']
+        'road-rage': ['RoadRage', 'system-ui', 'sans-serif'],
+        'special-elite': ['SpecialElite', 'system', 'sans-serif']
       },
     },
   },

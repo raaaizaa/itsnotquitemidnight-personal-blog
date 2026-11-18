@@ -16,7 +16,7 @@ export default function Navigation({ onPrevious, onNext, variant }: Props) {
           className="absolute top-8 hover:cursor-pointer hover:scale-110 animate-stutter"
           onClick={onPrevious}>
             {variant === 'bottom-section' && (
-            <p className="font-road-rage text-[#a83dc5] text-[24px]">
+            <p className="font-road-rage text-[#A65A50] text-[24px]">
               Go back
             </p>
           )}
@@ -34,7 +34,7 @@ export default function Navigation({ onPrevious, onNext, variant }: Props) {
           className="absolute bottom-8 hover:cursor-pointer hover:scale-110 flex flex-col items-center justify-center animate-stutter"
           onClick={onNext}>
           {variant === 'top-section' && (
-            <p className="font-road-rage text-[#a83dc5] text-[24px]">
+            <p className="font-road-rage text-[#A65A50] text-[24px]">
               Scroll here
             </p>
           )}

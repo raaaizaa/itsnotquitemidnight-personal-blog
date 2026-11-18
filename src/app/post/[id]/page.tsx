@@ -53,17 +53,17 @@ export default async function Post() {
   const { post_detail } = await getPostDetail(id);
 
   return (
-    <div className="bg-[#1a1a1a] flex justify-center mb-8">
+    <div className=" flex justify-center mb-8">
       <div>
         {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
         <a
           href="/"
-          className="font-hit-me-punk w-full text-[48px] md:text-[60px] lg:text-[72px] flex justify-center py-8 text-[#a83dc5] hover:scale-110">
+          className="font-hit-me-punk w-full text-[48px] md:text-[60px] lg:text-[72px] flex justify-center py-8 text-[#A65A50] hover:scale-110">
           itsnotquitemidnight
         </a>
-        <div className="px-8">
+        <div className="px-8 max-w-[600px] w-full">
           <PostDetail post={post_detail} />
-          <hr className="my-4 border-white" />
+          <hr className="mt-4 mb-5 border-white" />
           <OtherPostsWrapper />
         </div>
       </div>

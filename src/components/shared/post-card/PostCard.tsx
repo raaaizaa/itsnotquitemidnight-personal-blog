@@ -7,21 +7,21 @@ export default function PostCard({ item }: { item: PostProps }) {
   return (
     <a
       href={item.url}
-      className="py-2 border-[#a83dc5] hover:scale-105 min-w-[200px] w-full max-w-[500px] flex">
+      className="py-2 border-[#A65A50] border-t hover:scale-105  w-full flex">
       <div className="flex flex-col gap-2">
         <div>
-          <h3 className="font-road-rage text-[#a83dc5] text-[32px]">
+          <h3 className="font-road-rage text-[#A65A50] text-[32px]">
             {item.content.headline}
           </h3>
-          <p className="text-white text-[16px]">
+          <p className="text-[#E5DDD2] text-[16px]">
             {item.content.cutted_description}
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <p className="text-[#868686] border-[1px] w-fit px-1 py-0.5 text-[12px] rounded-[6px]">
+          <p className="text-[#847A70] border-[1px] w-fit px-1 py-0.5 text-[12px] rounded-[6px]">
             {item.content.tag}
           </p>
-          <p className="text-[#868686] text-[12px]">
+          <p className="text-[#847A70] text-[12px]">
             {formatDate(item.content.created_at)}
           </p>
         </div>

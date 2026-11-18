@@ -9,7 +9,7 @@ export default function PostDetail({ post }: { post: PostDetailProps | null }) {
 
   if (!content) return <NotFound />;
   return (
-    <div className=" text-white max-w-[560px] w-full">
+    <div className=" text-[#E5DDD2]">
       {tag && (
         <p className="text-[#868686] border-[1px] w-fit px-1 py-0.5 text-[11px] md:text-[12px] rounded-[6px]">
           {tag}
@@ -25,6 +25,7 @@ export default function PostDetail({ post }: { post: PostDetailProps | null }) {
           })}
         </p>
       )}
+      <hr className='mt-2 mb-3' />
       {content.map((item, index) => (
         <TextRenderer node={item} key={index} index={index} />
       ))}

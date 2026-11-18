@@ -57,7 +57,7 @@ export default async function Home() {
   const posts = await getPosts();
 
   return (
-    <div className="bg-[#1a1a1a]">
+    <>
       <Landing posts={posts} />
       <ClarityProvider />
       <script
@@ -66,6 +66,6 @@ export default async function Home() {
           __html: JSON.stringify(getSchema()).replace(/</g, '\\u003c'),
         }}
       />
-    </div>
+    </>
   );
 }
